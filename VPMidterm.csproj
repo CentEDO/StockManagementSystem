@@ -52,6 +52,18 @@
     <Compile Include="FactoryRegistration.Designer.cs">
       <DependentUpon>FactoryRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="NavigationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NavigationForm.Designer.cs">
+      <DependentUpon>NavigationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderProductForm.Designer.cs">
+      <DependentUpon>OrderProductForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductAddingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +74,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FactoryRegistration.resx">
       <DependentUpon>FactoryRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NavigationForm.resx">
+      <DependentUpon>NavigationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderProductForm.resx">
+      <DependentUpon>OrderProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductAddingForm.resx">
       <DependentUpon>ProductAddingForm.cs</DependentUpon>

@@ -39,6 +39,7 @@ namespace VPMidterm
             this.lblStockAmount = new System.Windows.Forms.Label();
             this.txtStockAmount = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnBackToNavForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblProductName
@@ -138,12 +139,22 @@ namespace VPMidterm
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
+            // btnBackToNavForm
+            // 
+            this.btnBackToNavForm.Location = new System.Drawing.Point(631, 356);
+            this.btnBackToNavForm.Name = "btnBackToNavForm";
+            this.btnBackToNavForm.Size = new System.Drawing.Size(100, 46);
+            this.btnBackToNavForm.TabIndex = 11;
+            this.btnBackToNavForm.Text = "Back to the Navigation Form";
+            this.btnBackToNavForm.UseVisualStyleBackColor = true;
+            // 
             // ProductAddingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBackToNavForm);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtStockAmount);
             this.Controls.Add(this.lblStockAmount);
@@ -173,5 +184,6 @@ namespace VPMidterm
         private System.Windows.Forms.Label lblStockAmount;
         private System.Windows.Forms.TextBox txtStockAmount;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnBackToNavForm;
     }
 }
