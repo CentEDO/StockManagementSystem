@@ -52,6 +52,13 @@
     <Compile Include="CustomerFactoriesList.Designer.cs">
       <DependentUpon>CustomerFactoriesList.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\DbContext.cs" />
+    <Compile Include="FactoryLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FactoryLogin.Designer.cs">
+      <DependentUpon>FactoryLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FactoryRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +99,9 @@
     </Compile>
     <EmbeddedResource Include="CustomerFactoriesList.resx">
       <DependentUpon>CustomerFactoriesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FactoryLogin.resx">
+      <DependentUpon>FactoryLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FactoryRegistration.resx">
       <DependentUpon>FactoryRegistration.cs</DependentUpon>

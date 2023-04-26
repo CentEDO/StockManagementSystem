@@ -39,6 +39,10 @@ namespace VPMidterm
             this.btnSubmit = new System.Windows.Forms.Button();
             this.rdbtnManufacturer = new System.Windows.Forms.RadioButton();
             this.rdnbtnCustomer = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.msktxtEmail = new System.Windows.Forms.MaskedTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -310,19 +314,20 @@ namespace VPMidterm
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(542, 412);
+            this.btnSubmit.Location = new System.Drawing.Point(587, 452);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 7;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // rdbtnManufacturer
             // 
             this.rdbtnManufacturer.AutoSize = true;
             this.rdbtnManufacturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.rdbtnManufacturer.ForeColor = System.Drawing.Color.White;
-            this.rdbtnManufacturer.Location = new System.Drawing.Point(313, 356);
+            this.rdbtnManufacturer.Location = new System.Drawing.Point(313, 420);
             this.rdbtnManufacturer.Name = "rdbtnManufacturer";
             this.rdbtnManufacturer.Size = new System.Drawing.Size(103, 20);
             this.rdbtnManufacturer.TabIndex = 8;
@@ -335,7 +340,7 @@ namespace VPMidterm
             this.rdnbtnCustomer.AutoSize = true;
             this.rdnbtnCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.rdnbtnCustomer.ForeColor = System.Drawing.Color.White;
-            this.rdnbtnCustomer.Location = new System.Drawing.Point(453, 356);
+            this.rdnbtnCustomer.Location = new System.Drawing.Point(453, 420);
             this.rdnbtnCustomer.Name = "rdnbtnCustomer";
             this.rdnbtnCustomer.Size = new System.Drawing.Size(83, 20);
             this.rdnbtnCustomer.TabIndex = 9;
@@ -343,12 +348,54 @@ namespace VPMidterm
             this.rdnbtnCustomer.Text = "Customer";
             this.rdnbtnCustomer.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(151, 315);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 24);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Email";
+            // 
+            // msktxtEmail
+            // 
+            this.msktxtEmail.Location = new System.Drawing.Point(313, 318);
+            this.msktxtEmail.Mask = "AAA@AAA.AAA";
+            this.msktxtEmail.Name = "msktxtEmail";
+            this.msktxtEmail.Size = new System.Drawing.Size(223, 20);
+            this.msktxtEmail.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(151, 376);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 24);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Password";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(313, 380);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(223, 20);
+            this.txtPassword.TabIndex = 13;
+            this.txtPassword.UseSystemPasswordChar = true;
+            // 
             // FactoryRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(995, 627);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.msktxtEmail);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.rdnbtnCustomer);
             this.Controls.Add(this.rdbtnManufacturer);
             this.Controls.Add(this.btnSubmit);
@@ -378,6 +425,10 @@ namespace VPMidterm
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.RadioButton rdbtnManufacturer;
         private System.Windows.Forms.RadioButton rdnbtnCustomer;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.MaskedTextBox msktxtEmail;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtPassword;
     }
 }
 
