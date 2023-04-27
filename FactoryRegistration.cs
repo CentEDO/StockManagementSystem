@@ -34,6 +34,10 @@ namespace VPMidterm
                         command.Parameters.AddWithValue("@email", msktxtEmail.Text);
                         command.Parameters.AddWithValue("@password", txtPassword.Text);
                         command.ExecuteNonQuery();
+                        MessageBox.Show("Registration completed!");
+                        NavigationForm navigationForm = new NavigationForm();
+                        navigationForm.Show();
+                        this.Hide();
                     }
                 }
                 if (rdnbtnCustomer.Checked)
@@ -47,6 +51,10 @@ namespace VPMidterm
                         command.Parameters.AddWithValue("@email", msktxtEmail.Text);
                         command.Parameters.AddWithValue("@password", txtPassword.Text);
                         command.ExecuteNonQuery();
+                        MessageBox.Show("Registration completed!");
+                        NavigationForm navigationForm = new NavigationForm();
+                        navigationForm.Show();
+                        this.Hide();
                     }
                     
                 }
