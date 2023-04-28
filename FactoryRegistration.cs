@@ -25,13 +25,25 @@ namespace VPMidterm
                 connection.Open();
                 if (rdbtnManufacturer.Checked)
                 {
-                    string insertQuery = "INSERT INTO MANUFACTURER_FACTORIES (CustomerFactoryName, CustomerFactoryLocation, CustomerFactoryEmail, CustomerFactoryPassword) " +
-                                        "VALUES (@name, @location, @email, @password)";
+                    string email = msktxtEmail.Text.Trim();
+                    string selectQuery = "SELECT COUNT(*) FROM MANUFACTURER_FACTORIES WHERE FactoryEmail = @Email";
+                    using (SqlCommand selectCommand = new SqlCommand(selectQuery, connection))
+                    {
+                        selectCommand.Parameters.AddWithValue("@Email", email);
+                        int emailCount = (int)selectCommand.ExecuteScalar();
+                        if (emailCount > 0)
+                        {
+                            MessageBox.Show("This email is already registered! Please try again with a different email.");
+                            return;
+                        }
+                    }
+                    string insertQuery = "INSERT INTO MANUFACTURER_FACTORIES (FactoryName, FactoryLocation, FactoryEmail, FactoryPassword) " +
+                                         "VALUES (@name, @location, @email, @password)";
                     using (SqlCommand command = new SqlCommand(insertQuery, connection))
                     {
                         command.Parameters.AddWithValue("@name", txtboxFactoryName.Text);
                         command.Parameters.AddWithValue("@location", ddlCountries.Text);
-                        command.Parameters.AddWithValue("@email", msktxtEmail.Text);
+                        command.Parameters.AddWithValue("@email", email);
                         command.Parameters.AddWithValue("@password", txtPassword.Text);
                         command.ExecuteNonQuery();
                         MessageBox.Show("Registration completed!");
@@ -42,13 +54,25 @@ namespace VPMidterm
                 }
                 if (rdnbtnCustomer.Checked)
                 {
+                    string email = msktxtEmail.Text.Trim();
+                    string selectQuery = "SELECT COUNT(*) FROM CUSTOMER_FACTORIES WHERE CustomerFactoryEmail = @Email";
+                    using (SqlCommand selectCommand = new SqlCommand(selectQuery, connection))
+                    {
+                        selectCommand.Parameters.AddWithValue("@Email", email);
+                        int emailCount = (int)selectCommand.ExecuteScalar();
+                        if (emailCount > 0)
+                        {
+                            MessageBox.Show("This email is already registered! Please try again with a different email.");
+                            return;
+                        }
+                    }
                     string insertQuery = "INSERT INTO CUSTOMER_FACTORIES (CustomerFactoryName, CustomerFactoryLocation, CustomerFactoryEmail, CustomerFactoryPassword) " +
-                                        "VALUES (@name, @location, @email, @password)";
+                                         "VALUES (@name, @location, @email, @password)";
                     using (SqlCommand command = new SqlCommand(insertQuery, connection))
                     {
                         command.Parameters.AddWithValue("@name", txtboxFactoryName.Text);
                         command.Parameters.AddWithValue("@location", ddlCountries.Text);
-                        command.Parameters.AddWithValue("@email", msktxtEmail.Text);
+                        command.Parameters.AddWithValue("@email", email);
                         command.Parameters.AddWithValue("@password", txtPassword.Text);
                         command.ExecuteNonQuery();
                         MessageBox.Show("Registration completed!");
@@ -56,9 +80,9 @@ namespace VPMidterm
                         navigationForm.Show();
                         this.Hide();
                     }
-                    
                 }
             }
         }
+
     }
 }

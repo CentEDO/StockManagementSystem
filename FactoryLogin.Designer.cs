@@ -35,6 +35,8 @@ namespace VPMidterm
             this.label5 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.rdbtnCustomer = new System.Windows.Forms.RadioButton();
+            this.rdbtnManufacturer = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // txtPassword
@@ -77,7 +79,7 @@ namespace VPMidterm
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(498, 306);
+            this.btnLogin.Location = new System.Drawing.Point(498, 323);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 18;
@@ -97,12 +99,40 @@ namespace VPMidterm
             this.label2.Text = "FACTORY LOGIN FORM";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // rdbtnCustomer
+            // 
+            this.rdbtnCustomer.AutoSize = true;
+            this.rdbtnCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rdbtnCustomer.ForeColor = System.Drawing.Color.White;
+            this.rdbtnCustomer.Location = new System.Drawing.Point(489, 271);
+            this.rdbtnCustomer.Name = "rdbtnCustomer";
+            this.rdbtnCustomer.Size = new System.Drawing.Size(83, 20);
+            this.rdbtnCustomer.TabIndex = 21;
+            this.rdbtnCustomer.TabStop = true;
+            this.rdbtnCustomer.Text = "Customer";
+            this.rdbtnCustomer.UseVisualStyleBackColor = true;
+            // 
+            // rdbtnManufacturer
+            // 
+            this.rdbtnManufacturer.AutoSize = true;
+            this.rdbtnManufacturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rdbtnManufacturer.ForeColor = System.Drawing.Color.White;
+            this.rdbtnManufacturer.Location = new System.Drawing.Point(349, 271);
+            this.rdbtnManufacturer.Name = "rdbtnManufacturer";
+            this.rdbtnManufacturer.Size = new System.Drawing.Size(103, 20);
+            this.rdbtnManufacturer.TabIndex = 20;
+            this.rdbtnManufacturer.TabStop = true;
+            this.rdbtnManufacturer.Text = "Manufacturer";
+            this.rdbtnManufacturer.UseVisualStyleBackColor = true;
+            // 
             // FactoryLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rdbtnCustomer);
+            this.Controls.Add(this.rdbtnManufacturer);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
@@ -124,5 +154,7 @@ namespace VPMidterm
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton rdbtnCustomer;
+        private System.Windows.Forms.RadioButton rdbtnManufacturer;
     }
 }
