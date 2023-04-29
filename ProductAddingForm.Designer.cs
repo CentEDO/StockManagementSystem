@@ -40,6 +40,8 @@ namespace VPMidterm
             this.txtStockAmount = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnBackToNavForm = new System.Windows.Forms.Button();
+            this.cmbboxWarehouse = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblProductName
@@ -47,7 +49,7 @@ namespace VPMidterm
             this.lblProductName.AutoSize = true;
             this.lblProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblProductName.ForeColor = System.Drawing.Color.White;
-            this.lblProductName.Location = new System.Drawing.Point(99, 116);
+            this.lblProductName.Location = new System.Drawing.Point(99, 90);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(131, 24);
             this.lblProductName.TabIndex = 0;
@@ -68,7 +70,7 @@ namespace VPMidterm
             // txtProductName
             // 
             this.txtProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtProductName.Location = new System.Drawing.Point(301, 113);
+            this.txtProductName.Location = new System.Drawing.Point(301, 85);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(212, 29);
             this.txtProductName.TabIndex = 3;
@@ -78,7 +80,7 @@ namespace VPMidterm
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblDescription.ForeColor = System.Drawing.Color.White;
-            this.lblDescription.Location = new System.Drawing.Point(99, 177);
+            this.lblDescription.Location = new System.Drawing.Point(99, 203);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(104, 24);
             this.lblDescription.TabIndex = 4;
@@ -87,7 +89,7 @@ namespace VPMidterm
             // txtDescription
             // 
             this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtDescription.Location = new System.Drawing.Point(301, 174);
+            this.txtDescription.Location = new System.Drawing.Point(301, 200);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(212, 29);
             this.txtDescription.TabIndex = 5;
@@ -97,7 +99,7 @@ namespace VPMidterm
             this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblPrice.ForeColor = System.Drawing.Color.White;
-            this.lblPrice.Location = new System.Drawing.Point(99, 244);
+            this.lblPrice.Location = new System.Drawing.Point(99, 263);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(53, 24);
             this.lblPrice.TabIndex = 6;
@@ -106,7 +108,7 @@ namespace VPMidterm
             // txtPrice
             // 
             this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtPrice.Location = new System.Drawing.Point(301, 241);
+            this.txtPrice.Location = new System.Drawing.Point(301, 258);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(212, 29);
             this.txtPrice.TabIndex = 7;
@@ -116,7 +118,7 @@ namespace VPMidterm
             this.lblStockAmount.AutoSize = true;
             this.lblStockAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblStockAmount.ForeColor = System.Drawing.Color.White;
-            this.lblStockAmount.Location = new System.Drawing.Point(99, 310);
+            this.lblStockAmount.Location = new System.Drawing.Point(99, 315);
             this.lblStockAmount.Name = "lblStockAmount";
             this.lblStockAmount.Size = new System.Drawing.Size(127, 24);
             this.lblStockAmount.TabIndex = 8;
@@ -125,7 +127,7 @@ namespace VPMidterm
             // txtStockAmount
             // 
             this.txtStockAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtStockAmount.Location = new System.Drawing.Point(301, 307);
+            this.txtStockAmount.Location = new System.Drawing.Point(301, 315);
             this.txtStockAmount.Name = "txtStockAmount";
             this.txtStockAmount.Size = new System.Drawing.Size(212, 29);
             this.txtStockAmount.TabIndex = 9;
@@ -138,6 +140,7 @@ namespace VPMidterm
             this.btnAdd.TabIndex = 10;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnBackToNavForm
             // 
@@ -148,12 +151,34 @@ namespace VPMidterm
             this.btnBackToNavForm.Text = "Back to the Navigation Form";
             this.btnBackToNavForm.UseVisualStyleBackColor = true;
             // 
+            // cmbboxWarehouse
+            // 
+            this.cmbboxWarehouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.cmbboxWarehouse.FormattingEnabled = true;
+            this.cmbboxWarehouse.Location = new System.Drawing.Point(301, 143);
+            this.cmbboxWarehouse.Name = "cmbboxWarehouse";
+            this.cmbboxWarehouse.Size = new System.Drawing.Size(212, 32);
+            this.cmbboxWarehouse.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(99, 146);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(108, 24);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Warehouse";
+            // 
             // ProductAddingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmbboxWarehouse);
             this.Controls.Add(this.btnBackToNavForm);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtStockAmount);
@@ -185,5 +210,7 @@ namespace VPMidterm
         private System.Windows.Forms.TextBox txtStockAmount;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnBackToNavForm;
+        private System.Windows.Forms.ComboBox cmbboxWarehouse;
+        private System.Windows.Forms.Label label1;
     }
 }
