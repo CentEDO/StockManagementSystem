@@ -125,6 +125,7 @@ namespace VPMidterm
             this.btnBackNavigationForm.TabIndex = 11;
             this.btnBackNavigationForm.Text = "Back to Navigation Form";
             this.btnBackNavigationForm.UseVisualStyleBackColor = true;
+            this.btnBackNavigationForm.Click += new System.EventHandler(this.btnBackNavigationForm_Click);
             // 
             // AddWarehouseForm
             // 

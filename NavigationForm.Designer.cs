@@ -37,9 +37,9 @@ namespace VPMidterm
             this.btnManufacturerFactory = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnOrder = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCustomerFactories = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblWarehouse
@@ -59,8 +59,9 @@ namespace VPMidterm
             this.btnWarehouse.Name = "btnWarehouse";
             this.btnWarehouse.Size = new System.Drawing.Size(102, 35);
             this.btnWarehouse.TabIndex = 1;
-            this.btnWarehouse.Text = "Warehouses";
+            this.btnWarehouse.Text = "&Warehouses";
             this.btnWarehouse.UseVisualStyleBackColor = true;
+            this.btnWarehouse.Click += new System.EventHandler(this.btnWarehouse_Click);
             // 
             // lblProduct
             // 
@@ -79,8 +80,9 @@ namespace VPMidterm
             this.btnProduct.Name = "btnProduct";
             this.btnProduct.Size = new System.Drawing.Size(102, 36);
             this.btnProduct.TabIndex = 3;
-            this.btnProduct.Text = "Products";
+            this.btnProduct.Text = "&Products";
             this.btnProduct.UseVisualStyleBackColor = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // label1
             // 
@@ -99,8 +101,9 @@ namespace VPMidterm
             this.btnManufacturerFactory.Name = "btnManufacturerFactory";
             this.btnManufacturerFactory.Size = new System.Drawing.Size(102, 34);
             this.btnManufacturerFactory.TabIndex = 5;
-            this.btnManufacturerFactory.Text = "Manufacturer Factories";
+            this.btnManufacturerFactory.Text = "&Manufacturer Factories";
             this.btnManufacturerFactory.UseVisualStyleBackColor = true;
+            this.btnManufacturerFactory.Click += new System.EventHandler(this.btnManufacturerFactory_Click);
             // 
             // label2
             // 
@@ -125,14 +128,15 @@ namespace VPMidterm
             this.label3.TabIndex = 7;
             this.label3.Text = "If you want to order product : ";
             // 
-            // button1
+            // btnOrder
             // 
-            this.button1.Location = new System.Drawing.Point(34, 336);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 39);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Order Product";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnOrder.Location = new System.Drawing.Point(34, 336);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(102, 39);
+            this.btnOrder.TabIndex = 8;
+            this.btnOrder.Text = "&Order Product";
+            this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // label4
             // 
@@ -145,14 +149,15 @@ namespace VPMidterm
             this.label4.TabIndex = 9;
             this.label4.Text = "If you want to see all Customer Factories :";
             // 
-            // button2
+            // btnCustomerFactories
             // 
-            this.button2.Location = new System.Drawing.Point(408, 108);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(97, 38);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Customer Factories";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCustomerFactories.Location = new System.Drawing.Point(408, 108);
+            this.btnCustomerFactories.Name = "btnCustomerFactories";
+            this.btnCustomerFactories.Size = new System.Drawing.Size(97, 38);
+            this.btnCustomerFactories.TabIndex = 10;
+            this.btnCustomerFactories.Text = "&Customer Factories";
+            this.btnCustomerFactories.UseVisualStyleBackColor = true;
+            this.btnCustomerFactories.Click += new System.EventHandler(this.btnCustomerFactories_Click);
             // 
             // NavigationForm
             // 
@@ -160,9 +165,9 @@ namespace VPMidterm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnCustomerFactories);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnManufacturerFactory);
@@ -188,8 +193,8 @@ namespace VPMidterm
         private System.Windows.Forms.Button btnManufacturerFactory;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCustomerFactories;
     }
 }

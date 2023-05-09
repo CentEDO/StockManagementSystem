@@ -13,8 +13,10 @@ namespace VPMidterm
 {
     public partial class ProductAddingForm : Form
     {
-        public ProductAddingForm()
+        private int factoryID;
+        public ProductAddingForm(int getFactoryID)
         {
+            factoryID = getFactoryID;
             InitializeComponent();
         }
 
@@ -54,7 +56,7 @@ namespace VPMidterm
                         }
 
                         MessageBox.Show("Product Added !");
-                        NavigationForm navigationForm = new NavigationForm();
+                        NavigationForm navigationForm = new NavigationForm(factoryID);
                         navigationForm.Show();
                         this.Hide();
                     }

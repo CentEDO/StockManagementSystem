@@ -30,9 +30,10 @@ namespace VPMidterm
         private void InitializeComponent()
         {
             this.btnBackNavForm = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gvManufacturerFactories = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.txtManufacturerName = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.gvManufacturerFactories)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBackNavForm
@@ -43,26 +44,34 @@ namespace VPMidterm
             this.btnBackNavForm.TabIndex = 13;
             this.btnBackNavForm.Text = "Back to Navigation Form";
             this.btnBackNavForm.UseVisualStyleBackColor = true;
+            this.btnBackNavForm.Click += new System.EventHandler(this.btnBackNavForm_Click);
             // 
-            // dataGridView1
+            // gvManufacturerFactories
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(62, 83);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(677, 294);
-            this.dataGridView1.TabIndex = 12;
+            this.gvManufacturerFactories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvManufacturerFactories.Location = new System.Drawing.Point(62, 83);
+            this.gvManufacturerFactories.Name = "gvManufacturerFactories";
+            this.gvManufacturerFactories.Size = new System.Drawing.Size(677, 294);
+            this.gvManufacturerFactories.TabIndex = 12;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Script MT Bold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(96, 26);
+            this.label2.Location = new System.Drawing.Point(95, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(591, 38);
             this.label2.TabIndex = 11;
             this.label2.Text = "MANUFACTURER FACTORIES FORM";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtManufacturerName
+            // 
+            this.txtManufacturerName.Location = new System.Drawing.Point(88, 57);
+            this.txtManufacturerName.Name = "txtManufacturerName";
+            this.txtManufacturerName.Size = new System.Drawing.Size(138, 20);
+            this.txtManufacturerName.TabIndex = 14;
             // 
             // ManufacturerFactoriesList
             // 
@@ -70,12 +79,14 @@ namespace VPMidterm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtManufacturerName);
             this.Controls.Add(this.btnBackNavForm);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.gvManufacturerFactories);
             this.Controls.Add(this.label2);
             this.Name = "ManufacturerFactoriesList";
             this.Text = "ManufacturerFactoriesList";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.ManufacturerFactoriesList_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gvManufacturerFactories)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,7 +95,8 @@ namespace VPMidterm
         #endregion
 
         private System.Windows.Forms.Button btnBackNavForm;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gvManufacturerFactories;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtManufacturerName;
     }
 }

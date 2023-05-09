@@ -30,9 +30,10 @@ namespace VPMidterm
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gvCustomerFactories = new System.Windows.Forms.DataGridView();
             this.btnBackNavForm = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.txtCustomerFactoryName = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCustomerFactories)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -40,20 +41,20 @@ namespace VPMidterm
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Script MT Bold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(154, 21);
+            this.label2.Location = new System.Drawing.Point(154, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(488, 38);
             this.label2.TabIndex = 8;
             this.label2.Text = "CUSTOMER FACTORIES FORM";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // dataGridView1
+            // gvCustomerFactories
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(48, 79);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(677, 294);
-            this.dataGridView1.TabIndex = 9;
+            this.gvCustomerFactories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvCustomerFactories.Location = new System.Drawing.Point(48, 79);
+            this.gvCustomerFactories.Name = "gvCustomerFactories";
+            this.gvCustomerFactories.Size = new System.Drawing.Size(677, 294);
+            this.gvCustomerFactories.TabIndex = 9;
             // 
             // btnBackNavForm
             // 
@@ -63,6 +64,14 @@ namespace VPMidterm
             this.btnBackNavForm.TabIndex = 10;
             this.btnBackNavForm.Text = "Back to Navigation Form";
             this.btnBackNavForm.UseVisualStyleBackColor = true;
+            this.btnBackNavForm.Click += new System.EventHandler(this.btnBackNavForm_Click);
+            // 
+            // txtCustomerFactoryName
+            // 
+            this.txtCustomerFactoryName.Location = new System.Drawing.Point(86, 53);
+            this.txtCustomerFactoryName.Name = "txtCustomerFactoryName";
+            this.txtCustomerFactoryName.Size = new System.Drawing.Size(160, 20);
+            this.txtCustomerFactoryName.TabIndex = 11;
             // 
             // CustomerFactoriesList
             // 
@@ -70,12 +79,13 @@ namespace VPMidterm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtCustomerFactoryName);
             this.Controls.Add(this.btnBackNavForm);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.gvCustomerFactories);
             this.Controls.Add(this.label2);
             this.Name = "CustomerFactoriesList";
             this.Text = "CustomerFactoriesList";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCustomerFactories)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,7 +94,8 @@ namespace VPMidterm
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gvCustomerFactories;
         private System.Windows.Forms.Button btnBackNavForm;
+        private System.Windows.Forms.TextBox txtCustomerFactoryName;
     }
 }

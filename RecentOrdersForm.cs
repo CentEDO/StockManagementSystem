@@ -12,9 +12,16 @@ namespace VPMidterm
 {
     public partial class RecentOrdersForm : Form
     {
+        private int factoryID;
+
         public RecentOrdersForm()
         {
             InitializeComponent();
+        }
+
+        public RecentOrdersForm(int factoryID)
+        {
+            this.factoryID = factoryID;
         }
     }
 }

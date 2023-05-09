@@ -58,6 +58,12 @@
     <Compile Include="CustomerFactoriesList.Designer.cs">
       <DependentUpon>CustomerFactoriesList.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomerNavigationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerNavigationForm.Designer.cs">
+      <DependentUpon>CustomerNavigationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\DbContext.cs" />
     <Compile Include="FactoryLogin.cs">
       <SubType>Form</SubType>
@@ -108,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerFactoriesList.resx">
       <DependentUpon>CustomerFactoriesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerNavigationForm.resx">
+      <DependentUpon>CustomerNavigationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FactoryLogin.resx">
       <DependentUpon>FactoryLogin.cs</DependentUpon>

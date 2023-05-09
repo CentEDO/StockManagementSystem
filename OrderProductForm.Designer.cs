@@ -150,6 +150,7 @@ namespace VPMidterm
             this.btnOrder.TabIndex = 17;
             this.btnOrder.Text = "Order";
             this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // btnBackNavForm
             // 
@@ -180,6 +181,7 @@ namespace VPMidterm
             this.Controls.Add(this.label2);
             this.Name = "OrderProductForm";
             this.Text = "OrderProductForm";
+            this.Load += new System.EventHandler(this.OrderProductForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

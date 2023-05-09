@@ -18,13 +18,13 @@ namespace VPMidterm
             InitializeComponent();
         }
 
-        private void AddWarehouseForm_Load(object sender, EventArgs e)
+        private void WarehouseAddForm_Load(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Midterm;Integrated Security=SSPI;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string selectQuery = "SELECT FactoryName FROM ManufacturingFactories";
+                string selectQuery = "SELECT FactoryName FROM MANUFACTURING_FACTORIES WHERE MANUFACTURING_FACTORIES.FactoryID= " + FactoryID;
                 using (SqlCommand command = new SqlCommand(selectQuery, connection))
                 {
                     SqlDataReader reader = command.ExecuteReader();
@@ -36,6 +36,7 @@ namespace VPMidterm
                 }
             }
         }
+
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -60,6 +61,13 @@ namespace VPMidterm
                     }
                 }
             }
+        }
+
+        private void btnBackNavigationForm_Click(object sender, EventArgs e)
+        {
+            NavigationForm  navigationForm= new NavigationForm();
+            navigationForm.Show();
+            this.Hide();
         }
     }
     
