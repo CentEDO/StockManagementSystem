@@ -26,7 +26,7 @@ namespace VPMidterm
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string selectQuery = "SELECT FactoryName FROM MANUFACTURING_FACTORIES WHERE MANUFACTURING_FACTORIES.FactoryID= " + FactoryID;
+                string selectQuery = "SELECT FactoryName FROM MANUFACTURING_FACTORIES WHERE MANUFACTURING_FACTORIES.FactoryID= " + factoryID;
                 using (SqlCommand command = new SqlCommand(selectQuery, connection))
                 {
                     SqlDataReader reader = command.ExecuteReader();

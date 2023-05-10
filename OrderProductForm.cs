@@ -67,7 +67,7 @@ namespace VPMidterm
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Midterm;Integrated Security=SSPI;";
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -116,5 +116,52 @@ namespace VPMidterm
             }
         }
 
+        private void cmbboxWarehouse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            string selectWarehouseQuery = "SELECT WarehouseName FROM WAREHOUSES WHERE FactoryID = (SELECT FactoryID FROM MANUFACTURING_FACTORIES WHERE FactoryName = @factoryName)";
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+
+            using (SqlCommand command = new SqlCommand(selectWarehouseQuery, connection))
+            {
+                command.Parameters.AddWithValue("@factoryName", cmbboxManufacturerCompany.SelectedItem.ToString());
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        cmbboxWarehouse.Items.Add(reader.GetString(0));
+                    }
+                }
+                reader.Close();
+            }
+
+        }
+
+        private void cmbboxManufacturerCompany_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Önce seçilen müşteri fabrikasının adını alın
+            string selectedCustomer = cmbboxManufacturerCompany.SelectedItem.ToString();
+
+            // Ardından, bu müşteriye ait depoların adlarını getirin
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string selectWarehouseQuery = "SELECT WarehouseName FROM WAREHOUSES WHERE FactoryID = (SELECT FactoryID FROM MANUFACTURING_FACTORIES WHERE FactoryName = @factoryName)";
+                using (SqlCommand command = new SqlCommand(selectWarehouseQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@customerName", selectedCustomer);
+                    SqlDataReader reader = command.ExecuteReader();
+                    cmbboxWarehouse.Items.Clear(); // ComboBox içeriğini temizle
+                    while (reader.Read())
+                    {
+                        cmbboxWarehouse.Items.Add(reader.GetString(0));
+                    }
+                    reader.Close();
+                }
+            }
+        }
     }
 }

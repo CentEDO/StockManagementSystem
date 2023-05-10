@@ -73,6 +73,7 @@ namespace VPMidterm
             this.cmbboxManufacturerCompany.Name = "cmbboxManufacturerCompany";
             this.cmbboxManufacturerCompany.Size = new System.Drawing.Size(121, 21);
             this.cmbboxManufacturerCompany.TabIndex = 9;
+            this.cmbboxManufacturerCompany.SelectedIndexChanged += new System.EventHandler(this.cmbboxManufacturerCompany_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -92,6 +93,7 @@ namespace VPMidterm
             this.cmbboxWarehouse.Name = "cmbboxWarehouse";
             this.cmbboxWarehouse.Size = new System.Drawing.Size(121, 21);
             this.cmbboxWarehouse.TabIndex = 11;
+            this.cmbboxWarehouse.SelectedIndexChanged += new System.EventHandler(this.cmbboxWarehouse_SelectedIndexChanged);
             // 
             // label4
             // 
