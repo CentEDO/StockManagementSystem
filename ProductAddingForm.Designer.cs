@@ -150,6 +150,7 @@ namespace VPMidterm
             this.btnBackToNavForm.TabIndex = 11;
             this.btnBackToNavForm.Text = "Back to the Navigation Form";
             this.btnBackToNavForm.UseVisualStyleBackColor = true;
+            this.btnBackToNavForm.Click += new System.EventHandler(this.btnBackToNavForm_Click);
             // 
             // cmbboxWarehouse
             // 
@@ -192,6 +193,7 @@ namespace VPMidterm
             this.Controls.Add(this.lblProductName);
             this.Name = "ProductAddingForm";
             this.Text = "ProductAddingForm";
+            this.Load += new System.EventHandler(this.ProductAddingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

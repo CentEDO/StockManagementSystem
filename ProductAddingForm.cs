@@ -63,5 +63,31 @@ namespace VPMidterm
                 }
             }
         }
+
+        private void ProductAddingForm_Load(object sender, EventArgs e)
+        {
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string selectQuery = "SELECT WarehouseName FROM WAREHOUSES ";
+                using (SqlCommand command = new SqlCommand(selectQuery, connection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        cmbboxWarehouse.Items.Add(reader.GetString(0));
+                    }
+                    reader.Close();
+                }
+            }
+        }
+
+        private void btnBackToNavForm_Click(object sender, EventArgs e)
+        {
+            NavigationForm navigationForm = new NavigationForm(factoryID);
+            navigationForm.Show();
+            this.Hide();
+        }
     }
 }
