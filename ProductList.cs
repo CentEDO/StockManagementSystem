@@ -21,16 +21,41 @@ namespace VPMidterm
         }
 
 
+        //private void ProductList_Load(object sender, EventArgs e)
+        //{
+        //    string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
+        //        string query = @"SELECT Products.ProductID, Products.ProductName, Products.ProductStockAmount, Warehouses.WarehouseName AS WarehouseName
+        //                        FROM Products
+        //                        JOIN Warehouses ON Products.WarehouseID = Warehouses.WarehouseID
+        //                        WHERE Products.ProductStockAmount > 0";
+
+        //        using (SqlCommand command = new SqlCommand(query, connection))
+        //        {
+        //            SqlDataReader reader = command.ExecuteReader();
+
+        //            DataTable dataTable = new DataTable();
+        //            dataTable.Load(reader);
+
+        //            gvProducts.DataSource = dataTable;
+        //            gvProducts.Columns["ProductID"].Visible = false;
+        //            //dataGridViewPL.Columns["WarehouseID"].Visible = false;
+        //        }
+        //    }
+        //}
         private void ProductList_Load(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = @"SELECT Products.ProductID, Products.ProductName, Products.ProductStockAmount, Warehouses.WarehouseName AS WarehouseName
-                                FROM Products
-                                JOIN Warehouses ON Products.WarehouseID = Warehouses.WarehouseID
-                                WHERE Products.ProductStockAmount > 0";
+                string query = @"SELECT P.ProductID, P.ProductName, P.ProductStockAmount, W.WarehouseName AS WarehouseName
+                        FROM PRODUCTS P
+                        JOIN WAREHOUSE_PRODUCTS WP ON P.ProductID = WP.ProductID
+                        JOIN WAREHOUSES W ON WP.WarehouseID = W.WarehouseID
+                        WHERE P.ProductStockAmount > 0";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -41,10 +66,17 @@ namespace VPMidterm
 
                     gvProducts.DataSource = dataTable;
                     gvProducts.Columns["ProductID"].Visible = false;
-                    //dataGridViewPL.Columns["WarehouseID"].Visible = false;
+                    // WarehouseID sütununu gizle
+                    if (gvProducts.Columns.Contains("WarehouseID"))
+                    {
+                        gvProducts.Columns["WarehouseID"].Visible = false;
+                    }
                 }
             }
         }
+
+
+
 
         private void btnBackNavForm_Click(object sender, EventArgs e)
         {

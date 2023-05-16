@@ -102,6 +102,6 @@
         private System.Windows.Forms.Label label2;
     }
 
-        #endregion
-    }
+        
+    
 }

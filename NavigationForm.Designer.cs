@@ -36,8 +36,6 @@ namespace VPMidterm
             this.label1 = new System.Windows.Forms.Label();
             this.btnManufacturerFactory = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnOrder = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCustomerFactories = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -117,27 +115,6 @@ namespace VPMidterm
             this.label2.Text = "NAVIGATION FORM";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(30, 309);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(252, 24);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "If you want to order product : ";
-            // 
-            // btnOrder
-            // 
-            this.btnOrder.Location = new System.Drawing.Point(34, 336);
-            this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(102, 39);
-            this.btnOrder.TabIndex = 8;
-            this.btnOrder.Text = "&Order Product";
-            this.btnOrder.UseVisualStyleBackColor = true;
-            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -167,8 +144,6 @@ namespace VPMidterm
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnCustomerFactories);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnOrder);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnManufacturerFactory);
             this.Controls.Add(this.label1);
@@ -192,8 +167,6 @@ namespace VPMidterm
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnManufacturerFactory;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCustomerFactories;
     }

@@ -121,6 +121,12 @@
     <Compile Include="RecentOrdersForm.Designer.cs">
       <DependentUpon>RecentOrdersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WarehouseList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WarehouseList.Designer.cs">
+      <DependentUpon>WarehouseList.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddWarehouseForm.resx">
       <DependentUpon>AddWarehouseForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +171,9 @@
     </Compile>
     <EmbeddedResource Include="RecentOrdersForm.resx">
       <DependentUpon>RecentOrdersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WarehouseList.resx">
+      <DependentUpon>WarehouseList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

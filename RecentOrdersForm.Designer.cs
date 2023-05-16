@@ -33,9 +33,9 @@ namespace VPMidterm
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gvRecentOrders = new System.Windows.Forms.DataGridView();
             this.btnBackNavForm = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvRecentOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -51,7 +51,7 @@ namespace VPMidterm
             this.label2.Text = "RECENT ORDERS FORM";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // dataGridView1
+            // gvRecentOrders
             // 
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -60,8 +60,8 @@ namespace VPMidterm
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvRecentOrders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.gvRecentOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -69,9 +69,9 @@ namespace VPMidterm
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView1.Location = new System.Drawing.Point(50, 87);
-            this.dataGridView1.Name = "dataGridView1";
+            this.gvRecentOrders.DefaultCellStyle = dataGridViewCellStyle5;
+            this.gvRecentOrders.Location = new System.Drawing.Point(50, 87);
+            this.gvRecentOrders.Name = "gvRecentOrders";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -79,9 +79,9 @@ namespace VPMidterm
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView1.Size = new System.Drawing.Size(710, 283);
-            this.dataGridView1.TabIndex = 9;
+            this.gvRecentOrders.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.gvRecentOrders.Size = new System.Drawing.Size(710, 283);
+            this.gvRecentOrders.TabIndex = 9;
             // 
             // btnBackNavForm
             // 
@@ -99,12 +99,13 @@ namespace VPMidterm
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnBackNavForm);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.gvRecentOrders);
             this.Controls.Add(this.label2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.Name = "RecentOrdersForm";
             this.Text = "RecentOrdersForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.RecentOrdersForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gvRecentOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,7 +114,7 @@ namespace VPMidterm
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gvRecentOrders;
         private System.Windows.Forms.Button btnBackNavForm;
     }
 }

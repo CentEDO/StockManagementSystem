@@ -22,8 +22,8 @@ namespace VPMidterm
         }
         private void btnBackNavForm_Click(object sender, EventArgs e)
         {
-            CustomerNavigationForm customerNavigationForm = new CustomerNavigationForm(factoryID);
-            customerNavigationForm.Show();
+            NavigationForm navigationForm = new NavigationForm(factoryID);
+            navigationForm.Show();
             this.Hide();
         }
 
@@ -44,7 +44,7 @@ namespace VPMidterm
                     dataTable.Load(reader);
 
                     gvManufacturerFactories.DataSource = dataTable;
-                    gvManufacturerFactories.Columns["ManufactoringPassword"].Visible = false;
+                    gvManufacturerFactories.Columns["FactoryPassword"].Visible = false;
                     gvManufacturerFactories.Columns["FactoryID"].Visible = false;
 
 

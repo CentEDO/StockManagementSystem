@@ -13,8 +13,15 @@ namespace VPMidterm
 {
     public partial class FactoryRegistration : Form
     {
+        private int FactoryID;
+        public FactoryRegistration(int getFactoryID)
+        {
+            FactoryID = getFactoryID;
+            InitializeComponent();
+        }
         public FactoryRegistration()
         {
+            
             InitializeComponent();
         }
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -26,7 +33,7 @@ namespace VPMidterm
                 if (rdbtnManufacturer.Checked)
                 {
                     string email = msktxtEmail.Text.Trim();
-                    string selectQuery = "SELECT COUNT(*) FROM MANUFACTURER_FACTORIES WHERE FactoryEmail = @Email";
+                    string selectQuery = "SELECT COUNT(*) FROM MANUFACTURING_FACTORIES WHERE FactoryEmail = @Email";
                     using (SqlCommand selectCommand = new SqlCommand(selectQuery, connection))
                     {
                         selectCommand.Parameters.AddWithValue("@Email", email);
@@ -37,7 +44,7 @@ namespace VPMidterm
                             return;
                         }
                     }
-                    string insertQuery = "INSERT INTO MANUFACTURER_FACTORIES (FactoryName, FactoryLocation, FactoryEmail, FactoryPassword) " +
+                    string insertQuery = "INSERT INTO MANUFACTURING_FACTORIES (FactoryName, FactoryLocation, FactoryEmail, FactoryPassword) " +
                                          "VALUES (@name, @location, @email, @password)";
                     using (SqlCommand command = new SqlCommand(insertQuery, connection))
                     {
@@ -47,7 +54,7 @@ namespace VPMidterm
                         command.Parameters.AddWithValue("@password", txtPassword.Text);
                         command.ExecuteNonQuery();
                         MessageBox.Show("Registration completed!");
-                        NavigationForm navigationForm = new NavigationForm();
+                        NavigationForm navigationForm = new NavigationForm(FactoryID);
                         navigationForm.Show();
                         this.Hide();
                     }
@@ -76,8 +83,8 @@ namespace VPMidterm
                         command.Parameters.AddWithValue("@password", txtPassword.Text);
                         command.ExecuteNonQuery();
                         MessageBox.Show("Registration completed!");
-                        NavigationForm navigationForm = new NavigationForm();
-                        navigationForm.Show();
+                        CustomerNavigationForm customerNavigationForm = new CustomerNavigationForm(FactoryID);
+                        customerNavigationForm.Show();
                         this.Hide();
                     }
                 }

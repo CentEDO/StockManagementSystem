@@ -18,7 +18,10 @@ namespace VPMidterm
             FactoryID = getFactoryID;
             InitializeComponent();
         }
-
+        public NavigationForm()
+        {
+            InitializeComponent();
+        }
         private void btnWarehouse_Click(object sender, EventArgs e)
         {
             WarehouseList warehouseList = new WarehouseList(FactoryID);
