@@ -16,7 +16,7 @@ namespace VPMidterm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FactoryLogin());
+            Application.Run(new LandingPage());
         }
     }
 }
