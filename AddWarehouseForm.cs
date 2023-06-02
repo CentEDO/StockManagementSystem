@@ -20,24 +20,7 @@ namespace VPMidterm
             InitializeComponent();
         }
 
-        private void WarehouseAddForm_Load(object sender, EventArgs e)
-        {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                string selectQuery = "SELECT FactoryName FROM MANUFACTURING_FACTORIES WHERE MANUFACTURING_FACTORIES.FactoryID= " + factoryID;
-                using (SqlCommand command = new SqlCommand(selectQuery, connection))
-                {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        cmbboxFactoryName.Items.Add(reader.GetString(0));
-                    }
-                    reader.Close();
-                }
-            }
-        }
+      
 
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -60,12 +43,11 @@ namespace VPMidterm
                         command.Parameters.AddWithValue("@factoryID", factoryID);
 
                         command.ExecuteNonQuery();
+                        MessageBox.Show("Warehouse added successfully!");
                     }
                 }
             }
         }
-
-
         private void btnBackNavigationForm_Click(object sender, EventArgs e)
         {
             NavigationForm  navigationForm= new NavigationForm(factoryID);
@@ -75,11 +57,11 @@ namespace VPMidterm
 
         private void AddWarehouseForm_Load(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string selectQuery = "SELECT FactoryName FROM MANUFACTURING_FACTORIES WHERE MANUFACTURING_FACTORIES.FactoryID=  " + factoryID;
+                string selectQuery = "SELECT FactoryName FROM MANUFACTURING_FACTORIES WHERE MANUFACTURING_FACTORIES.FactoryID= " + factoryID;
                 using (SqlCommand command = new SqlCommand(selectQuery, connection))
                 {
                     SqlDataReader reader = command.ExecuteReader();
@@ -91,7 +73,6 @@ namespace VPMidterm
                 }
             }
         }
-
     }
 
 }

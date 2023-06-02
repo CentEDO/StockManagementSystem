@@ -38,6 +38,10 @@ namespace VPMidterm
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCustomerFactories = new System.Windows.Forms.Button();
+            this.btnAddWarehouse = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnAddProduct = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblWarehouse
@@ -136,12 +140,58 @@ namespace VPMidterm
             this.btnCustomerFactories.UseVisualStyleBackColor = true;
             this.btnCustomerFactories.Click += new System.EventHandler(this.btnCustomerFactories_Click);
             // 
+            // btnAddWarehouse
+            // 
+            this.btnAddWarehouse.Location = new System.Drawing.Point(408, 190);
+            this.btnAddWarehouse.Name = "btnAddWarehouse";
+            this.btnAddWarehouse.Size = new System.Drawing.Size(97, 38);
+            this.btnAddWarehouse.TabIndex = 12;
+            this.btnAddWarehouse.Text = "&Add Warehouse";
+            this.btnAddWarehouse.UseVisualStyleBackColor = true;
+            this.btnAddWarehouse.Click += new System.EventHandler(this.btnAddWarehouse_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(404, 163);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(299, 24);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "If you want to see add Warehouse:";
+            // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.Location = new System.Drawing.Point(408, 285);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(97, 38);
+            this.btnAddProduct.TabIndex = 14;
+            this.btnAddProduct.Text = "&Add Product";
+            this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(404, 258);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(266, 24);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "If you want to see add Product:";
+            // 
             // NavigationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAddProduct);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnAddWarehouse);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCustomerFactories);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -153,6 +203,7 @@ namespace VPMidterm
             this.Controls.Add(this.lblWarehouse);
             this.Name = "NavigationForm";
             this.Text = "NavigationForm";
+            this.Load += new System.EventHandler(this.NavigationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +220,9 @@ namespace VPMidterm
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCustomerFactories;
+        private System.Windows.Forms.Button btnAddWarehouse;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnAddProduct;
+        private System.Windows.Forms.Label label5;
     }
 }

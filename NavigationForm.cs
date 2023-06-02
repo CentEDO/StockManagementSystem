@@ -18,10 +18,6 @@ namespace VPMidterm
             FactoryID = getFactoryID;
             InitializeComponent();
         }
-        public NavigationForm()
-        {
-            InitializeComponent();
-        }
         private void btnWarehouse_Click(object sender, EventArgs e)
         {
             WarehouseList warehouseList = new WarehouseList(FactoryID);
@@ -54,6 +50,27 @@ namespace VPMidterm
         {
             RecentOrdersForm recentOrdersForm = new RecentOrdersForm(FactoryID);
             recentOrdersForm.Show();
+            this.Hide();
+        }
+
+        
+
+        private void NavigationForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddWarehouse_Click(object sender, EventArgs e)
+        {
+            AddWarehouseForm addWarehouseForm = new AddWarehouseForm(FactoryID);
+            addWarehouseForm.Show();
+            this.Hide();
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            ProductAddingForm productAddingForm = new ProductAddingForm(FactoryID);
+            productAddingForm.Show();
             this.Hide();
         }
     }

@@ -31,7 +31,9 @@ namespace VPMidterm
             string query;
             if (rdbtnManufacturer.Checked)
             {
+                
                 query = "SELECT COUNT(*) FROM MANUFACTURING_FACTORIES WHERE FactoryEmail = @Email AND FactoryPassword = @Password";
+                
             }
             else if (rdbtnCustomer.Checked)
             {
@@ -46,12 +48,13 @@ namespace VPMidterm
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.Parameters.AddWithValue("@Email", email);
             cmd.Parameters.AddWithValue("@Password", password);
+            int getFactoryID = (int)cmd.ExecuteScalar();
 
             int result = (int)cmd.ExecuteScalar();
             if (result > 0)
             {
                 MessageBox.Show("Giriş Başarılı!");
-                NavigationForm navigationForm = new NavigationForm();
+                NavigationForm navigationForm = new NavigationForm(getFactoryID);
                 navigationForm.Show();
                 this.Hide();
             }
