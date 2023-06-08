@@ -44,7 +44,7 @@ namespace VPMidterm
             this.txtPassword.Location = new System.Drawing.Point(350, 227);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(223, 20);
-            this.txtPassword.TabIndex = 17;
+            this.txtPassword.TabIndex = 2;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // label6
@@ -64,7 +64,7 @@ namespace VPMidterm
             this.msktxtEmail.Mask = "AAA@AAA.AAA";
             this.msktxtEmail.Name = "msktxtEmail";
             this.msktxtEmail.Size = new System.Drawing.Size(223, 20);
-            this.msktxtEmail.TabIndex = 15;
+            this.msktxtEmail.TabIndex = 1;
             // 
             // label5
             // 
@@ -82,8 +82,8 @@ namespace VPMidterm
             this.btnLogin.Location = new System.Drawing.Point(498, 323);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
-            this.btnLogin.TabIndex = 18;
-            this.btnLogin.Text = "Login";
+            this.btnLogin.TabIndex = 5;
+            this.btnLogin.Text = "&Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -107,7 +107,7 @@ namespace VPMidterm
             this.rdbtnCustomer.Location = new System.Drawing.Point(489, 271);
             this.rdbtnCustomer.Name = "rdbtnCustomer";
             this.rdbtnCustomer.Size = new System.Drawing.Size(83, 20);
-            this.rdbtnCustomer.TabIndex = 21;
+            this.rdbtnCustomer.TabIndex = 4;
             this.rdbtnCustomer.TabStop = true;
             this.rdbtnCustomer.Text = "Customer";
             this.rdbtnCustomer.UseVisualStyleBackColor = true;
@@ -120,7 +120,7 @@ namespace VPMidterm
             this.rdbtnManufacturer.Location = new System.Drawing.Point(349, 271);
             this.rdbtnManufacturer.Name = "rdbtnManufacturer";
             this.rdbtnManufacturer.Size = new System.Drawing.Size(103, 20);
-            this.rdbtnManufacturer.TabIndex = 20;
+            this.rdbtnManufacturer.TabIndex = 3;
             this.rdbtnManufacturer.TabStop = true;
             this.rdbtnManufacturer.Text = "Manufacturer";
             this.rdbtnManufacturer.UseVisualStyleBackColor = true;

@@ -26,7 +26,7 @@ namespace VPMidterm
 
             connection.Open();
 
-            SqlCommand commandProduct = new SqlCommand("SELECT DISTINCT Products.ProductName, Products.ProductStockAmount, Warehouses.WarehouseName AS WarehouseName FROM Products JOIN Warehouses ON Products.WarehouseID = Warehouses.WarehouseID JOIN MANUFACTURING_FACTORIES ON Products.FactoryID = @getFactoryID", connection);
+            SqlCommand commandProduct = new SqlCommand("SELECT DISTINCT Products.ProductName, Products.ProductStockAmount,Products.ProductPrice, Warehouses.WarehouseName AS WarehouseName FROM Products JOIN Warehouses ON Products.WarehouseID = Warehouses.WarehouseID JOIN MANUFACTURING_FACTORIES ON Products.FactoryID = @getFactoryID", connection);
             commandProduct.Parameters.AddWithValue("@getFactoryID", factoryID);
             SqlDataReader readerProducts = commandProduct.ExecuteReader();
             DataTable dataTable = new DataTable();

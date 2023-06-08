@@ -71,7 +71,7 @@ namespace VPMidterm
             this.txtboxFactoryName.Location = new System.Drawing.Point(313, 127);
             this.txtboxFactoryName.Name = "txtboxFactoryName";
             this.txtboxFactoryName.Size = new System.Drawing.Size(223, 20);
-            this.txtboxFactoryName.TabIndex = 2;
+            this.txtboxFactoryName.TabIndex = 1;
             // 
             // label3
             // 
@@ -289,7 +289,7 @@ namespace VPMidterm
             this.ddlCountries.Location = new System.Drawing.Point(313, 197);
             this.ddlCountries.Name = "ddlCountries";
             this.ddlCountries.Size = new System.Drawing.Size(223, 21);
-            this.ddlCountries.TabIndex = 4;
+            this.ddlCountries.TabIndex = 2;
             // 
             // btnSubmit
             // 
@@ -297,7 +297,7 @@ namespace VPMidterm
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 7;
-            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.Text = "&Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
@@ -309,7 +309,7 @@ namespace VPMidterm
             this.rdbtnManufacturer.Location = new System.Drawing.Point(313, 420);
             this.rdbtnManufacturer.Name = "rdbtnManufacturer";
             this.rdbtnManufacturer.Size = new System.Drawing.Size(103, 20);
-            this.rdbtnManufacturer.TabIndex = 8;
+            this.rdbtnManufacturer.TabIndex = 5;
             this.rdbtnManufacturer.TabStop = true;
             this.rdbtnManufacturer.Text = "Manufacturer";
             this.rdbtnManufacturer.UseVisualStyleBackColor = true;
@@ -322,7 +322,7 @@ namespace VPMidterm
             this.rdnbtnCustomer.Location = new System.Drawing.Point(453, 420);
             this.rdnbtnCustomer.Name = "rdnbtnCustomer";
             this.rdnbtnCustomer.Size = new System.Drawing.Size(83, 20);
-            this.rdnbtnCustomer.TabIndex = 9;
+            this.rdnbtnCustomer.TabIndex = 6;
             this.rdnbtnCustomer.TabStop = true;
             this.rdnbtnCustomer.Text = "Customer";
             this.rdnbtnCustomer.UseVisualStyleBackColor = true;
@@ -344,7 +344,7 @@ namespace VPMidterm
             this.msktxtEmail.Mask = "AAA@AAA.AAA";
             this.msktxtEmail.Name = "msktxtEmail";
             this.msktxtEmail.Size = new System.Drawing.Size(223, 20);
-            this.msktxtEmail.TabIndex = 11;
+            this.msktxtEmail.TabIndex = 3;
             // 
             // label6
             // 
@@ -362,7 +362,7 @@ namespace VPMidterm
             this.txtPassword.Location = new System.Drawing.Point(313, 325);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(223, 20);
-            this.txtPassword.TabIndex = 13;
+            this.txtPassword.TabIndex = 4;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // FactoryRegistration

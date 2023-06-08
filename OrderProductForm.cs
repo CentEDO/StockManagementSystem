@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace VPMidterm
 {
@@ -20,172 +19,194 @@ namespace VPMidterm
             factoryID = getFactoryID;
             InitializeComponent();
         }
-        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;");
-
+        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;");
+        private Dictionary<int, string> factories = new Dictionary<int, string>();
         private void OrderProductForm_Load(object sender, EventArgs e)
         {
-
-
-            connection.Open();
-            // get data for comboBoxMF from CustomerFactories table
-            string selectCustomerQuery = "SELECT FactoryName FROM MANUFACTURING_FACTORIES  ";
-            using (SqlCommand command = new SqlCommand(selectCustomerQuery, connection))
+            con.Open();
+            SqlCommand commandName = new SqlCommand("SELECT FactoryID, FactoryName FROM MANUFACTURING_FACTORIES", con);
+            SqlDataReader readerName = commandName.ExecuteReader();
+            while (readerName.Read())
             {
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    cmbboxManufacturerCompany.Items.Add(reader.GetString(0));
-                }
-                reader.Close();
+                factories.Add(readerName.GetInt32(0), readerName.GetString(1));
             }
-            string selectWarehouseQuery = "SELECT WarehouseName FROM WAREHOUSES ";
-            using (SqlCommand command = new SqlCommand(selectWarehouseQuery, connection))
-            {
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    cmbboxWarehouse.Items.Add(reader.GetString(0));
-                }
-                reader.Close();
-            }
-
-            // get data for comboBoxWarehouse from Warehouses table
-            string selectProductsQuery = "SELECT ProductName FROM PRODUCTS";
-            using (SqlCommand command = new SqlCommand(selectProductsQuery, connection))
-            {
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    cmbboxProduct.Items.Add(reader.GetString(0));
-                }
-                reader.Close();
-            }
+            readerName.Close();
+            cmbboxManufacturerCompany.DisplayMember = "Value";
+            cmbboxManufacturerCompany.ValueMember = "Key";
+            cmbboxManufacturerCompany.DataSource = new BindingSource(factories, null);
 
 
-
+            con.Close();
         }
-
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            string selectedFactoryName = cmbboxManufacturerCompany.SelectedItem.ToString();
+            int selectedFactoryID = (int)cmbboxManufacturerCompany.SelectedValue;
+            int orderAmount = Convert.ToInt32(mtxtbxQuantity.Text);
+
+            using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;"))
             {
-                connection.Open();
-
-                // get product and customer IDs from their names
-                int productID, customerID;
-                using (SqlCommand getProductID = new SqlCommand("SELECT ProductID FROM PRODUCTS WHERE ProductName = @productName", connection))
+                conn.Open();
+                SqlCommand commandFactory = new SqlCommand("SELECT FactoryID from MANUFACTURING_FACTORIES where FactoryName = @FactoryName", conn);
+                commandFactory.Parameters.AddWithValue("@FactoryName", selectedFactoryName);
+                SqlDataReader readerID = commandFactory.ExecuteReader();
+                if (readerID.Read())
                 {
-                    getProductID.Parameters.AddWithValue("@productName", cmbboxProduct.Text);
-                    var productIDResult = getProductID.ExecuteScalar();
-                    if (productIDResult != null && productIDResult != DBNull.Value)
+                    selectedFactoryID = readerID.GetInt32(0);
+                }
+                readerID.Close();
+
+                SqlCommand commandProduct = new SqlCommand("SELECT Products.ProductName, Products.ProductStockAmount, MANUFACTURING_FACTORIES.FactoryEmail FROM Products JOIN MANUFACTURING_FACTORIES ON Products.FactoryID = MANUFACTURING_FACTORIES.FactoryID Where Products.FactoryID = @FactoryID", conn);
+                commandProduct.Parameters.AddWithValue("@FactoryID", selectedFactoryID);
+
+                SqlDataReader readerUpdate = commandProduct.ExecuteReader();
+
+                if (readerUpdate.Read())
+                {
+                    int amountProduct = readerUpdate.GetInt32(1);
+
+                    if (amountProduct >= orderAmount)
                     {
-                        productID = Convert.ToInt32(productIDResult);
+                        readerUpdate.Close();
+
+                        SqlTransaction transaction = conn.BeginTransaction();
+
+                        try
+                        {
+                            SqlCommand commandUpdate = new SqlCommand("UPDATE Products SET ProductStockAmount = ProductStockAmount - @Amount WHERE ProductID = @ProductID", conn, transaction);
+                            string selectedProductName = cmbboxProduct.SelectedItem.ToString();
+                            int productId = GetProductId(selectedProductName);
+
+                            commandUpdate.Parameters.AddWithValue("@ProductID", productId);
+                            commandUpdate.Parameters.AddWithValue("@Amount", orderAmount);
+                            commandUpdate.ExecuteNonQuery(); // Update the stock quantity
+
+                            DateTime orderDate = DateTime.Now;
+                            SqlCommand commandOrders = new SqlCommand("INSERT into Orders(CustomerFactoryID, ProductID, OrderDate, OrderQuantity) VALUES(@CustomerFactoryID, @ProductID, @OrderDate, @OrderQuantity)", conn, transaction);
+                            commandOrders.Parameters.AddWithValue("@CustomerFactoryID", factoryID);
+                            commandOrders.Parameters.AddWithValue("@ProductID", productId);
+                            commandOrders.Parameters.AddWithValue("@OrderDate", orderDate);
+                            commandOrders.Parameters.AddWithValue("@OrderQuantity", orderAmount);
+                            commandOrders.ExecuteNonQuery();
+
+                            transaction.Commit();
+                            MessageBox.Show("The order is successful.");
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show("An error occurred while updating the stock: " + ex.Message);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Invalid product name.");
-                        return;
+                        MessageBox.Show("Insufficient stock quantity.");
                     }
                 }
-
-                using (SqlCommand getCustomerID = new SqlCommand("SELECT CustomerFactoryID FROM CUSTOMER_FACTORIES WHERE CustomerFactoryName = @customerName", connection))
-                {
-                    getCustomerID.Parameters.AddWithValue("@customerName", cmbboxManufacturerCompany.Text);
-                    var customerIDResult = getCustomerID.ExecuteScalar();
-                    if (customerIDResult != null && customerIDResult != DBNull.Value)
-                    {
-                        customerID = Convert.ToInt32(customerIDResult);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid customer name.");
-                        return;
-                    }
-                }
-
-                // insert new order
-                string insertQuery = "INSERT INTO ORDERS (WarehouseProductID, CustomerFactoryID, OrderQuantity, OrderDate, OrderStatus) VALUES (@productID, @customerID, @quantity, @date, @status)";
-                using (SqlCommand command = new SqlCommand(insertQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@productID", productID);
-                    command.Parameters.AddWithValue("@customerID", customerID);
-                    command.Parameters.AddWithValue("@quantity", Convert.ToInt32(mtxtbxQuantity.Text));
-                    command.Parameters.AddWithValue("@date", DateTime.Now.Date);
-                    command.Parameters.AddWithValue("@status", "Pending");
-
-                    command.ExecuteNonQuery();
-                }
-
-                string updateWarehouseQuery = "UPDATE WAREHOUSE_PRODUCTS SET ProductStockAmount = ProductStockAmount - @quantity WHERE WarehouseProductID = @productID";
-                using (SqlCommand command = new SqlCommand(updateWarehouseQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@productID", productID);
-                    command.Parameters.AddWithValue("@quantity", Convert.ToInt32(mtxtbxQuantity.Text));
-                    command.ExecuteNonQuery();
-                }
-
-                MessageBox.Show("Order added successfully!");
-
-                // clear form
-                cmbboxProduct.SelectedIndex = -1;
-                cmbboxManufacturerCompany.SelectedIndex = -1;
-                mtxtbxQuantity.Text = "";
             }
         }
 
-
-        private void cmbboxWarehouse_SelectedIndexChanged(object sender, EventArgs e)
+        private int GetProductId(string productName)
         {
+            int productId = 0;
 
-            string selectWarehouseQuery = "SELECT WarehouseName FROM WAREHOUSES WHERE FactoryID = (SELECT FactoryID FROM MANUFACTURING_FACTORIES WHERE FactoryName = @factoryName)";
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;"))
             {
-                connection.Open(); // Bağlantıyı aç
-
-                using (SqlCommand command = new SqlCommand(selectWarehouseQuery, connection))
+                conn.Open();
+                SqlCommand command = new SqlCommand("SELECT ProductID FROM Products WHERE ProductName = @ProductName", conn);
+                command.Parameters.AddWithValue("@ProductName", productName);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
                 {
-                    command.Parameters.AddWithValue("@factoryName", cmbboxManufacturerCompany.SelectedItem.ToString());
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            cmbboxWarehouse.Items.Add(reader.GetString(0));
-                        }
-                    }
-                    reader.Close();
+                    productId = reader.GetInt32(0);
                 }
+                reader.Close();
             }
 
-
+            return productId;
         }
 
         private void cmbboxManufacturerCompany_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Önce seçilen müşteri fabrikasının adını alın
-            string selectedCustomer = cmbboxManufacturerCompany.SelectedItem.ToString();
+            string selectedFactoryName = cmbboxManufacturerCompany.SelectedItem.ToString();
+            int selectedFactoryID = (int)cmbboxManufacturerCompany.SelectedValue;
 
-            // Ardından, bu müşteriye ait depoların adlarını getirin
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;"))
             {
-                connection.Open();
-                string selectWarehouseQuery = "SELECT WarehouseName FROM WAREHOUSES WHERE FactoryID = (SELECT FactoryID FROM MANUFACTURING_FACTORIES WHERE FactoryName = @factoryName)";
-                using (SqlCommand command = new SqlCommand(selectWarehouseQuery, connection))
+                conn.Open();
+
+                // Seçilen üretici fabrikasının kimlik numarasını al
+                SqlCommand commandFactory = new SqlCommand("SELECT FactoryID FROM MANUFACTURING_FACTORIES WHERE FactoryName = @FactoryName", conn);
+                commandFactory.Parameters.AddWithValue("@FactoryName", selectedFactoryName);
+                SqlDataReader readerID = commandFactory.ExecuteReader();
+                if (readerID.Read())
                 {
-                    command.Parameters.AddWithValue("@factoryName", selectedCustomer);
-                    SqlDataReader reader = command.ExecuteReader();
-                    cmbboxWarehouse.Items.Clear(); // ComboBox içeriğini temizle
-                    while (reader.Read())
-                    {
-                        cmbboxWarehouse.Items.Add(reader.GetString(0));
-                    }
-                    reader.Close();
+                    selectedFactoryID = readerID.GetInt32(0);
                 }
+                readerID.Close();
+
+                // Seçilen üretici fabrikasına ait ürünleri ve bunların depolarını al
+                SqlCommand commandProduct = new SqlCommand("SELECT DISTINCT Products.ProductName, Products.ProductStockAmount, Warehouses.WarehouseName AS WarehouseName, Products.ProductID FROM Products JOIN Warehouses ON Products.WarehouseID = Warehouses.WarehouseID WHERE Products.FactoryID = @FactoryID", conn);
+                commandProduct.Parameters.AddWithValue("@FactoryID", selectedFactoryID);
+
+                SqlDataReader readerProducts = commandProduct.ExecuteReader();
+
+                // ComboBox'ı temizle
+                cmbboxWarehouse.Items.Clear();
+
+                // Ürünleri ve depoları ComboBox'a ekle
+                while (readerProducts.Read())
+                {
+                    string productName = readerProducts.GetString(0);
+                    string warehouseName = readerProducts.GetString(2);
+                    int productID = readerProducts.GetInt32(3);
+
+                    // ComboBox'a sadece depo adını ekleyin
+                    cmbboxWarehouse.Items.Add(warehouseName);
+                }
+
+                readerProducts.Close();
             }
+        }
+
+        private void cmbboxWarehouse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Seçilen depo adını al
+            string selectedWarehouseName = cmbboxWarehouse.SelectedItem.ToString();
+
+            using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;"))
+            {
+                conn.Open();
+
+                // Seçilen depoya ait ürünleri al
+                SqlCommand commandProduct = new SqlCommand("SELECT Products.ProductName, Products.ProductID FROM Products JOIN Warehouses ON Products.WarehouseID = Warehouses.WarehouseID WHERE Warehouses.WarehouseName = @WarehouseName", conn);
+                commandProduct.Parameters.AddWithValue("@WarehouseName", selectedWarehouseName);
+
+                SqlDataReader readerProducts = commandProduct.ExecuteReader();
+
+                // ComboBox'ı temizle
+                cmbboxProduct.Items.Clear();
+
+                // Ürünleri ComboBox'a ekle
+                while (readerProducts.Read())
+                {
+                    string productName = readerProducts.GetString(0);
+                    int productID = readerProducts.GetInt32(1);
+
+                    // ComboBox'a ürünleri ekle
+                    cmbboxProduct.Items.Add(productName);
+                }
+
+                readerProducts.Close();
+            }
+        }
+
+        private void btnBackNavForm_Click(object sender, EventArgs e)
+        {
+            CustomerNavigationForm customerNavigationForm = new CustomerNavigationForm(factoryID);
+            customerNavigationForm.Show();
+            this.Hide();
         }
     }
 }
