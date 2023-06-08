@@ -12,32 +12,42 @@ namespace VPMidterm
 {
     public partial class CustomerNavigationForm : Form
     {
-        private int FactoryID;
+        private int factoryID;
         public CustomerNavigationForm(int getFactoryID)
         {
-            FactoryID = getFactoryID;
+            factoryID = getFactoryID;
             InitializeComponent();
         }
-
+        public CustomerNavigationForm()
+        {
+            InitializeComponent();
+        }
         private void btnManufacturerList_Click(object sender, EventArgs e)
         {
-            ManufacturerFactoriesList manufacturerFactoriesList = new ManufacturerFactoriesList(FactoryID);
+            ManufacturerFactoriesList manufacturerFactoriesList = new ManufacturerFactoriesList(factoryID);
             manufacturerFactoriesList.Show();
             this.Hide();
         }
 
         private void btnGoOrderList_Click(object sender, EventArgs e)
         {
-            RecentOrdersForm recentOrdersForm = new RecentOrdersForm(FactoryID);
+            RecentOrdersForm recentOrdersForm = new RecentOrdersForm(factoryID);
             recentOrdersForm.Show();
             this.Hide();
         }
 
         private void btnGoOrder_Click(object sender, EventArgs e)
         {
-            OrderProductForm orderProductForm = new OrderProductForm(FactoryID);
+            OrderProductForm orderProductForm = new OrderProductForm(factoryID);
             orderProductForm.Show();
             this.Hide();
+        }
+
+        
+
+        private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

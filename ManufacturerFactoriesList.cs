@@ -22,7 +22,7 @@ namespace VPMidterm
         }
         private void btnBackNavForm_Click(object sender, EventArgs e)
         {
-            NavigationForm navigationForm = new NavigationForm(factoryID);
+            CustomerNavigationForm navigationForm = new CustomerNavigationForm(factoryID);
             navigationForm.Show();
             this.Hide();
         }
@@ -34,7 +34,7 @@ namespace VPMidterm
             {
                 connection.Open();
 
-                string query = "SELECT * FROM MANUFACTURING_FACTORIES";
+                string query = "SELECT FactoryName, FactoryLocation,FactoryEmail FROM MANUFACTURING_FACTORIES";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -44,8 +44,7 @@ namespace VPMidterm
                     dataTable.Load(reader);
 
                     gvManufacturerFactories.DataSource = dataTable;
-                    gvManufacturerFactories.Columns["FactoryPassword"].Visible = false;
-                    gvManufacturerFactories.Columns["FactoryID"].Visible = false;
+                    
 
 
                 }

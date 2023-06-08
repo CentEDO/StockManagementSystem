@@ -20,50 +20,51 @@ namespace VPMidterm
             factoryID = getFactoryID;
             InitializeComponent();
         }
+        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;");
 
         private void OrderProductForm_Load(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+
+
+            connection.Open();
+            // get data for comboBoxMF from CustomerFactories table
+            string selectCustomerQuery = "SELECT FactoryName FROM MANUFACTURING_FACTORIES  ";
+            using (SqlCommand command = new SqlCommand(selectCustomerQuery, connection))
             {
-                connection.Open();
-                // get data for comboBoxMF from CustomerFactories table
-                string selectCustomerQuery = "SELECT CustomerFactoryName FROM CUSTOMER_FACTORIES  ";
-                using (SqlCommand command = new SqlCommand(selectCustomerQuery, connection))
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        cmbboxManufacturerCompany.Items.Add(reader.GetString(0));
-                    }
-                    reader.Close();
+                    cmbboxManufacturerCompany.Items.Add(reader.GetString(0));
                 }
-                string selectWarehouseQuery = "SELECT WarehouseName FROM WAREHOUSES ";
-                using (SqlCommand command = new SqlCommand(selectWarehouseQuery, connection))
-                {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        cmbboxWarehouse.Items.Add(reader.GetString(0));
-                    }
-                    reader.Close();
-                }
-
-                // get data for comboBoxWarehouse from Warehouses table
-                string selectProductsQuery = "SELECT ProductName FROM PRODUCTS";
-                using (SqlCommand command = new SqlCommand(selectProductsQuery, connection))
-                {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        cmbboxProduct.Items.Add(reader.GetString(0));
-                    }
-                    reader.Close();
-                }
-
-
+                reader.Close();
             }
+            string selectWarehouseQuery = "SELECT WarehouseName FROM WAREHOUSES ";
+            using (SqlCommand command = new SqlCommand(selectWarehouseQuery, connection))
+            {
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    cmbboxWarehouse.Items.Add(reader.GetString(0));
+                }
+                reader.Close();
+            }
+
+            // get data for comboBoxWarehouse from Warehouses table
+            string selectProductsQuery = "SELECT ProductName FROM PRODUCTS";
+            using (SqlCommand command = new SqlCommand(selectProductsQuery, connection))
+            {
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    cmbboxProduct.Items.Add(reader.GetString(0));
+                }
+                reader.Close();
+            }
+
+
+
         }
+
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
@@ -77,13 +78,31 @@ namespace VPMidterm
                 using (SqlCommand getProductID = new SqlCommand("SELECT ProductID FROM PRODUCTS WHERE ProductName = @productName", connection))
                 {
                     getProductID.Parameters.AddWithValue("@productName", cmbboxProduct.Text);
-                    productID = (int)getProductID.ExecuteScalar();
+                    var productIDResult = getProductID.ExecuteScalar();
+                    if (productIDResult != null && productIDResult != DBNull.Value)
+                    {
+                        productID = Convert.ToInt32(productIDResult);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid product name.");
+                        return;
+                    }
                 }
 
                 using (SqlCommand getCustomerID = new SqlCommand("SELECT CustomerFactoryID FROM CUSTOMER_FACTORIES WHERE CustomerFactoryName = @customerName", connection))
                 {
                     getCustomerID.Parameters.AddWithValue("@customerName", cmbboxManufacturerCompany.Text);
-                    customerID = (int)getCustomerID.ExecuteScalar();
+                    var customerIDResult = getCustomerID.ExecuteScalar();
+                    if (customerIDResult != null && customerIDResult != DBNull.Value)
+                    {
+                        customerID = Convert.ToInt32(customerIDResult);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid customer name.");
+                        return;
+                    }
                 }
 
                 // insert new order
@@ -116,26 +135,31 @@ namespace VPMidterm
             }
         }
 
+
         private void cmbboxWarehouse_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             string selectWarehouseQuery = "SELECT WarehouseName FROM WAREHOUSES WHERE FactoryID = (SELECT FactoryID FROM MANUFACTURING_FACTORIES WHERE FactoryName = @factoryName)";
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
             using (SqlConnection connection = new SqlConnection(connectionString))
-
-            using (SqlCommand command = new SqlCommand(selectWarehouseQuery, connection))
             {
-                command.Parameters.AddWithValue("@factoryName", cmbboxManufacturerCompany.SelectedItem.ToString());
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
+                connection.Open(); // Bağlantıyı aç
+
+                using (SqlCommand command = new SqlCommand(selectWarehouseQuery, connection))
                 {
-                    while (reader.Read())
+                    command.Parameters.AddWithValue("@factoryName", cmbboxManufacturerCompany.SelectedItem.ToString());
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
                     {
-                        cmbboxWarehouse.Items.Add(reader.GetString(0));
+                        while (reader.Read())
+                        {
+                            cmbboxWarehouse.Items.Add(reader.GetString(0));
+                        }
                     }
+                    reader.Close();
                 }
-                reader.Close();
             }
+
 
         }
 
@@ -152,7 +176,7 @@ namespace VPMidterm
                 string selectWarehouseQuery = "SELECT WarehouseName FROM WAREHOUSES WHERE FactoryID = (SELECT FactoryID FROM MANUFACTURING_FACTORIES WHERE FactoryName = @factoryName)";
                 using (SqlCommand command = new SqlCommand(selectWarehouseQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@customerName", selectedCustomer);
+                    command.Parameters.AddWithValue("@factoryName", selectedCustomer);
                     SqlDataReader reader = command.ExecuteReader();
                     cmbboxWarehouse.Items.Clear(); // ComboBox içeriğini temizle
                     while (reader.Read())

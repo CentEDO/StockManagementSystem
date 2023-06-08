@@ -13,43 +13,31 @@ namespace VPMidterm
 {
     public partial class WarehouseList : Form
     {
-        private int FactoryID;
+        private int factoryID;
         public WarehouseList(int getFactoryID)
         {
-            FactoryID = getFactoryID;
+            factoryID = getFactoryID;
             InitializeComponent();
         }
-      
+
+        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;");
 
         private void WarehouseList_Load(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
+            connection.Open();
+            SqlCommand commandWarehouse = new SqlCommand("SELECT WarehouseName, WarehouseLocation FROM Warehouses where FactoryID = @getFactoryID", connection);
+            commandWarehouse.Parameters.AddWithValue("@getFactoryID", factoryID);
 
-                string query = "SELECT WAREHOUSES.WarehouseID, WAREHOUSES.WarehouseName, WAREHOUSES.WarehouseLocation, MANUFACTURING_FACTORIES.FactoryName, WAREHOUSES.FactoryID FROM WAREHOUSES INNER JOIN MANUFACTURING_FACTORIES ON WAREHOUSES.FactoryID = MANUFACTURING_FACTORIES.FactoryID WHERE MANUFACTURING_FACTORIES.FactoryID=  " + FactoryID;
+            SqlDataReader readerWarehouses = commandWarehouse.ExecuteReader();
+            DataTable dataTable = new DataTable();
+            dataTable.Load(readerWarehouses);
 
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    DataTable dataTable = new DataTable();
-                    dataTable.Load(reader);
-
-                    gvWarehouses.DataSource = dataTable;
-                    gvWarehouses.Columns["WarehouseID"].Visible = false;
-
-
-
-                }
-            }
+            gvWarehouses.DataSource = dataTable;
         }
 
         private void btnBackNavForm_Click(object sender, EventArgs e)
         {
-            NavigationForm navigationForm = new NavigationForm(FactoryID);
+            NavigationForm navigationForm = new NavigationForm(factoryID);
             navigationForm.Show();
             this.Hide();
         }

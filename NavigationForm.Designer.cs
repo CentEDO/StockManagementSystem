@@ -29,12 +29,11 @@ namespace VPMidterm
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblWarehouse = new System.Windows.Forms.Label();
             this.btnWarehouse = new System.Windows.Forms.Button();
             this.lblProduct = new System.Windows.Forms.Label();
             this.btnProduct = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnManufacturerFactory = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCustomerFactories = new System.Windows.Forms.Button();
@@ -42,6 +41,12 @@ namespace VPMidterm
             this.label3 = new System.Windows.Forms.Label();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.appToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.formToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblWarehouse
@@ -85,27 +90,6 @@ namespace VPMidterm
             this.btnProduct.Text = "&Products";
             this.btnProduct.UseVisualStyleBackColor = true;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(30, 231);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(376, 24);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "If you want to see all manufacturer factories :";
-            // 
-            // btnManufacturerFactory
-            // 
-            this.btnManufacturerFactory.Location = new System.Drawing.Point(34, 258);
-            this.btnManufacturerFactory.Name = "btnManufacturerFactory";
-            this.btnManufacturerFactory.Size = new System.Drawing.Size(102, 34);
-            this.btnManufacturerFactory.TabIndex = 5;
-            this.btnManufacturerFactory.Text = "&Manufacturer Factories";
-            this.btnManufacturerFactory.UseVisualStyleBackColor = true;
-            this.btnManufacturerFactory.Click += new System.EventHandler(this.btnManufacturerFactory_Click);
             // 
             // label2
             // 
@@ -182,12 +166,52 @@ namespace VPMidterm
             this.label5.TabIndex = 13;
             this.label5.Text = "If you want to see add Product:";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.appToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 15;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // appToolStripMenuItem
+            // 
+            this.appToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.formToolStripMenuItem});
+            this.appToolStripMenuItem.Name = "appToolStripMenuItem";
+            this.appToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.appToolStripMenuItem.Text = "App";
+            // 
+            // formToolStripMenuItem
+            // 
+            this.formToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.formToolStripMenuItem.Name = "formToolStripMenuItem";
+            this.formToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.formToolStripMenuItem.Text = "Form";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // NavigationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnAddWarehouse);
@@ -195,8 +219,6 @@ namespace VPMidterm
             this.Controls.Add(this.btnCustomerFactories);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnManufacturerFactory);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnProduct);
             this.Controls.Add(this.lblProduct);
             this.Controls.Add(this.btnWarehouse);
@@ -204,6 +226,8 @@ namespace VPMidterm
             this.Name = "NavigationForm";
             this.Text = "NavigationForm";
             this.Load += new System.EventHandler(this.NavigationForm_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,8 +239,6 @@ namespace VPMidterm
         private System.Windows.Forms.Button btnWarehouse;
         private System.Windows.Forms.Label lblProduct;
         private System.Windows.Forms.Button btnProduct;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnManufacturerFactory;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCustomerFactories;
@@ -224,5 +246,10 @@ namespace VPMidterm
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem appToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem formToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }

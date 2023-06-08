@@ -85,6 +85,7 @@ namespace VPMidterm
             this.Controls.Add(this.label2);
             this.Name = "CustomerFactoriesList";
             this.Text = "CustomerFactoriesList";
+            this.Load += new System.EventHandler(this.CustomerFactoriesList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvCustomerFactories)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

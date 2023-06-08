@@ -16,37 +16,25 @@ namespace VPMidterm
         private int factoryID;
         public AddWarehouseForm(int getFactoryID)
         {
-            factoryID = getFactoryID;
             InitializeComponent();
+            factoryID = getFactoryID;
+            
         }
 
-      
+
+        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;");
 
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                string factoryIDQuery = "SELECT FactoryID FROM MANUFACTURING_FACTORIES WHERE FactoryName = @factoryName";
-                using (SqlCommand factoryIDCommand = new SqlCommand(factoryIDQuery, connection))
-                {
-                    factoryIDCommand.Parameters.AddWithValue("@factoryName", cmbboxFactoryName.Text);
-                    int factoryID = Convert.ToInt32(factoryIDCommand.ExecuteScalar());
+            string getName = txtWarehouseName.Text;
+            string getCountry = txtWarehouseAddress.Text;
 
-                    string insertQuery = "INSERT INTO WAREHOUSES (WarehouseName, WarehouseLocation, FactoryID) VALUES (@name, @location, @factoryID)";
-                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@name", txtWarehouseName.Text);
-                        command.Parameters.AddWithValue("@location", txtWarehouseAddress.Text);
-                        command.Parameters.AddWithValue("@factoryID", factoryID);
-
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("Warehouse added successfully!");
-                    }
-                }
-            }
+            con.Open();
+            SqlCommand command = new SqlCommand("INSERT into Warehouses(WarehouseName, FactoryID,  WarehouseLocation)" + "VALUES('" + getName + "', '" + factoryID + "','" + getCountry + "')", con);
+            command.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Successfully.");
         }
         private void btnBackNavigationForm_Click(object sender, EventArgs e)
         {
@@ -55,24 +43,7 @@ namespace VPMidterm
             this.Hide();
         }
 
-        private void AddWarehouseForm_Load(object sender, EventArgs e)
-        {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                string selectQuery = "SELECT FactoryName FROM MANUFACTURING_FACTORIES WHERE MANUFACTURING_FACTORIES.FactoryID= " + factoryID;
-                using (SqlCommand command = new SqlCommand(selectQuery, connection))
-                {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        cmbboxFactoryName.Items.Add(reader.GetString(0));
-                    }
-                    reader.Close();
-                }
-            }
-        }
+        
     }
 
 }

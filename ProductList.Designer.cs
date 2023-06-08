@@ -28,19 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtCustomerFactoryName = new System.Windows.Forms.TextBox();
             this.btnBackNavForm = new System.Windows.Forms.Button();
             this.gvProducts = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gvProducts)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtCustomerFactoryName
-            // 
-            this.txtCustomerFactoryName.Location = new System.Drawing.Point(94, 85);
-            this.txtCustomerFactoryName.Name = "txtCustomerFactoryName";
-            this.txtCustomerFactoryName.Size = new System.Drawing.Size(160, 20);
-            this.txtCustomerFactoryName.TabIndex = 15;
             // 
             // btnBackNavForm
             // 
@@ -79,7 +71,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(789, 494);
-            this.Controls.Add(this.txtCustomerFactoryName);
             this.Controls.Add(this.btnBackNavForm);
             this.Controls.Add(this.gvProducts);
             this.Controls.Add(this.label2);
@@ -95,8 +86,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtCustomerFactoryName;
         private System.Windows.Forms.Button btnBackNavForm;
         private System.Windows.Forms.DataGridView gvProducts;
         private System.Windows.Forms.Label label2;

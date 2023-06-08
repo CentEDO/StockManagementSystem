@@ -19,65 +19,26 @@ namespace VPMidterm
             factoryID = getFactoryID;
             InitializeComponent();
         }
-
-
-        //private void ProductList_Load(object sender, EventArgs e)
-        //{
-        //    string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        connection.Open();
-        //        string query = @"SELECT Products.ProductID, Products.ProductName, Products.ProductStockAmount, Warehouses.WarehouseName AS WarehouseName
-        //                        FROM Products
-        //                        JOIN Warehouses ON Products.WarehouseID = Warehouses.WarehouseID
-        //                        WHERE Products.ProductStockAmount > 0";
-
-        //        using (SqlCommand command = new SqlCommand(query, connection))
-        //        {
-        //            SqlDataReader reader = command.ExecuteReader();
-
-        //            DataTable dataTable = new DataTable();
-        //            dataTable.Load(reader);
-
-        //            gvProducts.DataSource = dataTable;
-        //            gvProducts.Columns["ProductID"].Visible = false;
-        //            //dataGridViewPL.Columns["WarehouseID"].Visible = false;
-        //        }
-        //    }
-        //}
+        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;");
         private void ProductList_Load(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                string query = @"SELECT P.ProductID, P.ProductName, P.ProductStockAmount, W.WarehouseName AS WarehouseName
-                        FROM PRODUCTS P
-                        JOIN WAREHOUSE_PRODUCTS WP ON P.ProductID = WP.ProductID
-                        JOIN WAREHOUSES W ON WP.WarehouseID = W.WarehouseID
-                        WHERE P.ProductStockAmount > 0";
 
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    SqlDataReader reader = command.ExecuteReader();
 
-                    DataTable dataTable = new DataTable();
-                    dataTable.Load(reader);
+            connection.Open();
 
-                    gvProducts.DataSource = dataTable;
-                    gvProducts.Columns["ProductID"].Visible = false;
-                    // WarehouseID sütununu gizle
-                    if (gvProducts.Columns.Contains("WarehouseID"))
-                    {
-                        gvProducts.Columns["WarehouseID"].Visible = false;
-                    }
-                }
-            }
+            SqlCommand commandProduct = new SqlCommand("SELECT DISTINCT Products.ProductName, Products.ProductStockAmount, Warehouses.WarehouseName AS WarehouseName FROM Products JOIN Warehouses ON Products.WarehouseID = Warehouses.WarehouseID JOIN MANUFACTURING_FACTORIES ON Products.FactoryID = @getFactoryID", connection);
+            commandProduct.Parameters.AddWithValue("@getFactoryID", factoryID);
+            SqlDataReader readerProducts = commandProduct.ExecuteReader();
+            DataTable dataTable = new DataTable();
+            dataTable.Load(readerProducts);
+            gvProducts.DataSource = dataTable;
+            readerProducts.Close();
+            connection.Close();
+
         }
 
 
-
-
+            
         private void btnBackNavForm_Click(object sender, EventArgs e)
         {
             NavigationForm navigationForm = new NavigationForm(factoryID);

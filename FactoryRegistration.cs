@@ -17,75 +17,56 @@ namespace VPMidterm
         {
             InitializeComponent();
         }
-        
+
+        SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=True");
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (rdbtnManufacturer.Checked)
             {
+                string getName = txtboxFactoryName.Text;
+                string getEmail = msktxtEmail.Text;
+                string getAddress = ddlCountries.Text;
+                string getPassword = txtPassword.Text;
+                int getFactoryID;
+
                 connection.Open();
-                if (rdbtnManufacturer.Checked)
-                {
-                    string email = msktxtEmail.Text.Trim();
-                    string selectQuery = "SELECT COUNT(*) FROM MANUFACTURING_FACTORIES WHERE FactoryEmail = @Email";
-                    using (SqlCommand selectCommand = new SqlCommand(selectQuery, connection))
-                    {
-                        selectCommand.Parameters.AddWithValue("@Email", email);
-                        int emailCount = (int)selectCommand.ExecuteScalar();
-                        if (emailCount > 0)
-                        {
-                            MessageBox.Show("This email is already registered! Please try again with a different email.");
-                            return;
-                        }
-                    }
-                    string insertQuery = "INSERT INTO MANUFACTURING_FACTORIES (FactoryName, FactoryLocation, FactoryEmail, FactoryPassword) " +
-                                         "VALUES (@name, @location, @email, @password)";
-                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
-                    {
-                        int getFactoryID = (int)command.ExecuteScalar();
-                        command.Parameters.AddWithValue("@name", txtboxFactoryName.Text);
-                        command.Parameters.AddWithValue("@location", ddlCountries.Text);
-                        command.Parameters.AddWithValue("@email", email);
-                        command.Parameters.AddWithValue("@password", txtPassword.Text);
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("Registration completed!");
-                        NavigationForm navigationForm = new NavigationForm(getFactoryID);
-                        navigationForm.Show();
-                        this.Hide();
-                    }
-                }
-                if (rdnbtnCustomer.Checked)
-                {
-                    string email = msktxtEmail.Text.Trim();
-                    string selectQuery = "SELECT COUNT(*) FROM CUSTOMER_FACTORIES WHERE CustomerFactoryEmail = @Email";
-                    using (SqlCommand selectCommand = new SqlCommand(selectQuery, connection))
-                    {
-                        selectCommand.Parameters.AddWithValue("@Email", email);
-                        int emailCount = (int)selectCommand.ExecuteScalar();
-                        if (emailCount > 0)
-                        {
-                            MessageBox.Show("This email is already registered! Please try again with a different email.");
-                            return;
-                        }
-                    }
-                    string insertQuery = "INSERT INTO CUSTOMER_FACTORIES (CustomerFactoryName, CustomerFactoryLocation, CustomerFactoryEmail, CustomerFactoryPassword) " +
-                                         "VALUES (@name, @location, @email, @password)";
-                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
-                    {
-                        int getFactoryID = (int)command.ExecuteScalar();
-                        command.Parameters.AddWithValue("@name", txtboxFactoryName.Text);
-                        command.Parameters.AddWithValue("@location", ddlCountries.Text);
-                        command.Parameters.AddWithValue("@email", email);
-                        command.Parameters.AddWithValue("@password", txtPassword.Text);
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("Registration completed!");
-                        CustomerNavigationForm customerNavigationForm = new CustomerNavigationForm(getFactoryID);
-                        customerNavigationForm.Show();
-                        this.Hide();
-                    }
-                }
+                SqlCommand command = new SqlCommand("INSERT into MANUFACTURING_FACTORIES(FactoryName, FactoryEmail, FactoryLocation, FactoryPassword)" + "VALUES('" + getName + "','" + getEmail + "', '" + getAddress + "', '" + getPassword + "')", connection);
+                command.ExecuteNonQuery();
+                SqlCommand commandID = new SqlCommand("Select FactoryID from MANUFACTURING_FACTORIES where FactoryEmail = @getEmail", connection);
+                commandID.Parameters.AddWithValue("@getEmail", getEmail);
+                getFactoryID = (int)commandID.ExecuteScalar();
+                connection.Close();
+
+                MessageBox.Show("Successfully.");
+                NavigationForm navigationForm = new NavigationForm();
+                navigationForm.Show();
+                this.Hide();
+            }
+            if (rdnbtnCustomer.Checked)
+            {
+                string getName = txtboxFactoryName.Text;
+                string getEmail = msktxtEmail.Text;
+                string getAddress = ddlCountries.Text;
+                string getPassword = txtPassword.Text;
+                int getFactoryID;
+
+                connection.Open();
+                SqlCommand command = new SqlCommand("INSERT into CUSTOMER_FACTORIES(CustomerFactoryName, CustomerFactoryEmail, CustomerFactoryLocation, CustomerFactoryPassword)" + "VALUES('" + getName + "', '" + getEmail + "', '" + getAddress + "', '" + getPassword + "')", connection);
+                command.ExecuteNonQuery();
+                SqlCommand commandID = new SqlCommand("Select CustomerFactoryID from CUSTOMER_FACTORIES where CustomerFactoryEmail = @getEmail", connection);
+                commandID.Parameters.AddWithValue("@getEmail", getEmail);
+                getFactoryID = (int)commandID.ExecuteScalar();
+                connection.Close();
+
+                MessageBox.Show("Successfully.");
+                CustomerNavigationForm customerNavigationForm = new CustomerNavigationForm();
+                customerNavigationForm.Show();
+                this.Hide();
             }
         }
 
+
     }
+
 }
+

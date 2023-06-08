@@ -30,12 +30,10 @@ namespace VPMidterm
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtWarehouseName = new System.Windows.Forms.TextBox();
             this.txtWarehouseAddress = new System.Windows.Forms.TextBox();
-            this.cmbboxFactoryName = new System.Windows.Forms.ComboBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnBackNavigationForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -52,23 +50,12 @@ namespace VPMidterm
             this.label2.Text = "ADDING WAREHOUSE FORM";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(116, 137);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 24);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Factory Name";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(116, 201);
+            this.label3.Location = new System.Drawing.Point(174, 158);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(164, 24);
             this.label3.TabIndex = 4;
@@ -79,7 +66,7 @@ namespace VPMidterm
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(116, 267);
+            this.label4.Location = new System.Drawing.Point(174, 224);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(183, 24);
             this.label4.TabIndex = 5;
@@ -87,25 +74,17 @@ namespace VPMidterm
             // 
             // txtWarehouseName
             // 
-            this.txtWarehouseName.Location = new System.Drawing.Point(392, 204);
+            this.txtWarehouseName.Location = new System.Drawing.Point(450, 161);
             this.txtWarehouseName.Name = "txtWarehouseName";
             this.txtWarehouseName.Size = new System.Drawing.Size(145, 20);
             this.txtWarehouseName.TabIndex = 7;
             // 
             // txtWarehouseAddress
             // 
-            this.txtWarehouseAddress.Location = new System.Drawing.Point(392, 270);
+            this.txtWarehouseAddress.Location = new System.Drawing.Point(450, 227);
             this.txtWarehouseAddress.Name = "txtWarehouseAddress";
             this.txtWarehouseAddress.Size = new System.Drawing.Size(145, 20);
             this.txtWarehouseAddress.TabIndex = 8;
-            // 
-            // cmbboxFactoryName
-            // 
-            this.cmbboxFactoryName.FormattingEnabled = true;
-            this.cmbboxFactoryName.Location = new System.Drawing.Point(392, 139);
-            this.cmbboxFactoryName.Name = "cmbboxFactoryName";
-            this.cmbboxFactoryName.Size = new System.Drawing.Size(145, 21);
-            this.cmbboxFactoryName.TabIndex = 9;
             // 
             // btnSubmit
             // 
@@ -135,16 +114,13 @@ namespace VPMidterm
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnBackNavigationForm);
             this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.cmbboxFactoryName);
             this.Controls.Add(this.txtWarehouseAddress);
             this.Controls.Add(this.txtWarehouseName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Name = "AddWarehouseForm";
             this.Text = "AddWarehouseForm";
-            this.Load += new System.EventHandler(this.AddWarehouseForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,12 +129,10 @@ namespace VPMidterm
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtWarehouseName;
         private System.Windows.Forms.TextBox txtWarehouseAddress;
-        private System.Windows.Forms.ComboBox cmbboxFactoryName;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnBackNavigationForm;
     }

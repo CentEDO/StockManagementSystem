@@ -19,68 +19,24 @@ namespace VPMidterm
             factoryID = getFactoryID;
             InitializeComponent();
         }
+        SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;");
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                // Depo adına karşılık gelen depo ID'sini bul
-                string warehouseIDQuery = "SELECT WarehouseID FROM Warehouses WHERE WarehouseName = @warehouseName";
-                using (SqlCommand warehouseIDCommand = new SqlCommand(warehouseIDQuery, connection))
-                {
-                    warehouseIDCommand.Parameters.AddWithValue("@warehouseName", cmbboxWarehouse.Text);
-                    int warehouseID = (int)warehouseIDCommand.ExecuteScalar();
+        
 
-                    // Yeni bir ürün ekle
-                    string insertQuery = "INSERT INTO Products (ProductName, ProductDescription, ProductPrice, ProductStockAmount) " +
-                                         "VALUES (@name, @description, @price, @amount); SELECT SCOPE_IDENTITY()";
-                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
-                    {
-                        command.Parameters.AddWithValue("@name", txtProductName.Text);
-                        command.Parameters.AddWithValue("@description", txtDescription.Text);
-                        command.Parameters.AddWithValue("@price", Convert.ToDecimal(txtPrice.Text));
-                        command.Parameters.AddWithValue("@amount", Convert.ToInt32(txtStockAmount.Text));
-                        int productID = Convert.ToInt32(command.ExecuteScalar());
 
-                        // Depo ve ürün bağlantısını kur
-                        string insertWarehouseProductQuery = "INSERT INTO WAREHOUSE_PRODUCTS (WarehouseID, ProductID, Quantity) " +
-                                                              "VALUES (@warehouseID, @productID, @quantity)";
-                        using (SqlCommand warehouseProductCommand = new SqlCommand(insertWarehouseProductQuery, connection))
-                        {
-                            warehouseProductCommand.Parameters.AddWithValue("@warehouseID", warehouseID);
-                            warehouseProductCommand.Parameters.AddWithValue("@productID", productID);
-                            warehouseProductCommand.Parameters.AddWithValue("@quantity", 0);
-                            warehouseProductCommand.ExecuteNonQuery();
-                        }
-
-                        MessageBox.Show("Product Added !");
-                        NavigationForm navigationForm = new NavigationForm(factoryID);
-                        navigationForm.Show();
-                        this.Hide();
-                    }
-                }
-            }
-        }
 
         private void ProductAddingForm_Load(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                string selectQuery = "SELECT WarehouseName FROM WAREHOUSES ";
-                using (SqlCommand command = new SqlCommand(selectQuery, connection))
-                {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        cmbboxWarehouse.Items.Add(reader.GetString(0));
-                    }
-                    reader.Close();
-                }
-            }
+            connection.Open();
+            SqlCommand commandName = new SqlCommand("SELECT WarehouseName FROM WAREHOUSES Where FactoryID = @factoryID", connection);
+            commandName.Parameters.AddWithValue("@factoryID", factoryID);
+            SqlDataAdapter adapter = new SqlDataAdapter(commandName);
+
+            DataTable datatable = new DataTable();
+            adapter.Fill(datatable);
+            cmbboxWarehouse.DisplayMember = "WarehouseName";
+            cmbboxWarehouse.DataSource = datatable;
+            connection.Close();
         }
 
         private void btnBackToNavForm_Click(object sender, EventArgs e)
@@ -88,6 +44,42 @@ namespace VPMidterm
             NavigationForm navigationForm = new NavigationForm(factoryID);
             navigationForm.Show();
             this.Hide();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            string getName = txtProductName.Text;
+            string getStockAmount = txtStockAmount.Text;
+            string getWarehouseName = cmbboxWarehouse.Text;
+            string getDesc = cmbboxWarehouse.Text;
+            string getPrice = txtPrice.Text;
+
+            connection.Open();
+            SqlCommand commanWarehouseID = new SqlCommand("SELECT WarehouseID FROM Warehouses WHERE WarehouseName = @WarehouseName", connection);
+            commanWarehouseID.Parameters.AddWithValue("@WarehouseName", getWarehouseName);
+            int getWarehouseID = (int)commanWarehouseID.ExecuteScalar();
+
+            SqlCommand commandSelect = new SqlCommand("SELECT COUNT(*) FROM Products WHERE ProductName = @Name AND WarehouseID = @WarehouseID", connection);
+            commandSelect.Parameters.AddWithValue("@Name", getName);
+            commandSelect.Parameters.AddWithValue("@WarehouseID", getWarehouseID);
+            int count = (int)commandSelect.ExecuteScalar();
+
+            if (count > 0)
+            {
+                SqlCommand commandUpdate = new SqlCommand("UPDATE Products SET ProductStockAmount = ProductStockAmount + @Amount WHERE ProductName = @Name AND WarehouseID = @WarehouseID", connection);
+                commandUpdate.Parameters.AddWithValue("@Amount", getStockAmount);
+                commandUpdate.Parameters.AddWithValue("@Name", getName);
+                commandUpdate.Parameters.AddWithValue("@WarehouseID", getWarehouseID);
+                commandUpdate.ExecuteNonQuery();
+                MessageBox.Show("Updated successfully.");
+            }
+            else
+            {
+                SqlCommand commandInsert = new SqlCommand("INSERT into Products(ProductName,ProductPrice, FactoryID, ProductDescription, ProductStockAmount, WarehouseID)" + "VALUES('" + getName + "', '" + getPrice + "', '" + factoryID + "',  '" + getDesc + "','" + getStockAmount + "', '" + getWarehouseID + "')", connection);
+                commandInsert.ExecuteNonQuery();
+                connection.Close();
+                MessageBox.Show("Added successfully.");
+            }
         }
     }
 }

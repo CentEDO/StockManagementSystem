@@ -19,30 +19,30 @@ namespace VPMidterm
             factoryID = getFactoryID;
             InitializeComponent();
         }
-        private void CustomerFactoriesListForm_Load(object sender, EventArgs e)
-        {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
+        //private void CustomerFactoriesListForm_Load(object sender, EventArgs e)
+        //{
+        //    string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
 
-                string query = "SELECT * FROM CUSTOMER_FACTORIES";
+        //        string query = "SELECT * FROM CUSTOMER_FACTORIES";
 
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    SqlDataReader reader = command.ExecuteReader();
+        //        using (SqlCommand command = new SqlCommand(query, connection))
+        //        {
+        //            SqlDataReader reader = command.ExecuteReader();
 
-                    DataTable dataTable = new DataTable();
-                    dataTable.Load(reader);
+        //            DataTable dataTable = new DataTable();
+        //            dataTable.Load(reader);
 
-                    gvCustomerFactories.DataSource = dataTable;
-                    gvCustomerFactories.Columns["CustomerPassword"].Visible = false;
-                    gvCustomerFactories.Columns["CustomerID"].Visible = false;
+        //            gvCustomerFactories.DataSource = dataTable;
+        //            gvCustomerFactories.Columns["CustomerPassword"].Visible = false;
+        //            gvCustomerFactories.Columns["CustomerID"].Visible = false;
 
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         private void btnBackNavForm_Click(object sender, EventArgs e)
         {
@@ -74,6 +74,31 @@ namespace VPMidterm
                 connection.Close();
             }
 
+        }
+
+        private void CustomerFactoriesList_Load(object sender, EventArgs e)
+        {
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM CUSTOMER_FACTORIES";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(reader);
+
+                    gvCustomerFactories.DataSource = dataTable;
+                    gvCustomerFactories.Columns["CustomerFactoryPassword"].Visible = false;
+                    gvCustomerFactories.Columns["CustomerFactoryID"].Visible = false;
+
+
+                }
+            }
         }
     }
 }

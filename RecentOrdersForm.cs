@@ -15,14 +15,10 @@ namespace VPMidterm
     {
         private int factoryID;
 
-        public RecentOrdersForm()
+        public RecentOrdersForm(int getFactoryID)
         {
             InitializeComponent();
-        }
-
-        public RecentOrdersForm(int factoryID)
-        {
-            this.factoryID = factoryID;
+            factoryID = getFactoryID;
         }
 
         private void RecentOrdersForm_Load(object sender, EventArgs e)

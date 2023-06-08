@@ -34,8 +34,6 @@ namespace VPMidterm
             this.txtboxFactoryName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.ddlCountries = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.mskdtxtboxPhoneNumber = new System.Windows.Forms.MaskedTextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.rdbtnManufacturer = new System.Windows.Forms.RadioButton();
             this.rdnbtnCustomer = new System.Windows.Forms.RadioButton();
@@ -293,25 +291,6 @@ namespace VPMidterm
             this.ddlCountries.Size = new System.Drawing.Size(223, 21);
             this.ddlCountries.TabIndex = 4;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(151, 260);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(140, 24);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Phone Number";
-            // 
-            // mskdtxtboxPhoneNumber
-            // 
-            this.mskdtxtboxPhoneNumber.Location = new System.Drawing.Point(313, 265);
-            this.mskdtxtboxPhoneNumber.Mask = "(999) 000-0000";
-            this.mskdtxtboxPhoneNumber.Name = "mskdtxtboxPhoneNumber";
-            this.mskdtxtboxPhoneNumber.Size = new System.Drawing.Size(223, 20);
-            this.mskdtxtboxPhoneNumber.TabIndex = 6;
-            // 
             // btnSubmit
             // 
             this.btnSubmit.Location = new System.Drawing.Point(587, 452);
@@ -353,7 +332,7 @@ namespace VPMidterm
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(151, 315);
+            this.label5.Location = new System.Drawing.Point(151, 260);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 24);
             this.label5.TabIndex = 10;
@@ -361,7 +340,7 @@ namespace VPMidterm
             // 
             // msktxtEmail
             // 
-            this.msktxtEmail.Location = new System.Drawing.Point(313, 318);
+            this.msktxtEmail.Location = new System.Drawing.Point(313, 263);
             this.msktxtEmail.Mask = "AAA@AAA.AAA";
             this.msktxtEmail.Name = "msktxtEmail";
             this.msktxtEmail.Size = new System.Drawing.Size(223, 20);
@@ -372,7 +351,7 @@ namespace VPMidterm
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(151, 376);
+            this.label6.Location = new System.Drawing.Point(151, 321);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(92, 24);
             this.label6.TabIndex = 12;
@@ -380,7 +359,7 @@ namespace VPMidterm
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(313, 380);
+            this.txtPassword.Location = new System.Drawing.Point(313, 325);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(223, 20);
             this.txtPassword.TabIndex = 13;
@@ -399,8 +378,6 @@ namespace VPMidterm
             this.Controls.Add(this.rdnbtnCustomer);
             this.Controls.Add(this.rdbtnManufacturer);
             this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.mskdtxtboxPhoneNumber);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.ddlCountries);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtboxFactoryName);
@@ -420,8 +397,6 @@ namespace VPMidterm
         private System.Windows.Forms.TextBox txtboxFactoryName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox ddlCountries;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.MaskedTextBox mskdtxtboxPhoneNumber;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.RadioButton rdbtnManufacturer;
         private System.Windows.Forms.RadioButton rdnbtnCustomer;

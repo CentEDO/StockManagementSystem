@@ -12,43 +12,42 @@ namespace VPMidterm
 {
     public partial class NavigationForm : Form
     {
-        private int FactoryID;
+        private int factoryID;
         public NavigationForm(int getFactoryID)
         {
-            FactoryID = getFactoryID;
+            factoryID = getFactoryID;
+            InitializeComponent();
+        }
+        public NavigationForm()
+        {
             InitializeComponent();
         }
         private void btnWarehouse_Click(object sender, EventArgs e)
         {
-            WarehouseList warehouseList = new WarehouseList(FactoryID);
+            WarehouseList warehouseList = new WarehouseList(factoryID);
             warehouseList.Show();
             this.Hide();
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
         {
-            ProductList ProductList = new ProductList(FactoryID);
+            ProductList ProductList = new ProductList(factoryID);
             ProductList.Show();
             this.Hide();
         }
 
-        private void btnManufacturerFactory_Click(object sender, EventArgs e)
-        {
-            ManufacturerFactoriesList manufacturerFactoriesList = new ManufacturerFactoriesList(FactoryID);
-            manufacturerFactoriesList.Show();
-            this.Hide();
-        }
+        
 
         private void btnCustomerFactories_Click(object sender, EventArgs e)
         {
-            CustomerFactoriesList customerFactoriesList = new CustomerFactoriesList(FactoryID);
+            CustomerFactoriesList customerFactoriesList = new CustomerFactoriesList(factoryID);
             customerFactoriesList.Show();
             this.Hide();
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            RecentOrdersForm recentOrdersForm = new RecentOrdersForm(FactoryID);
+            RecentOrdersForm recentOrdersForm = new RecentOrdersForm(factoryID);
             recentOrdersForm.Show();
             this.Hide();
         }
@@ -62,16 +61,21 @@ namespace VPMidterm
 
         private void btnAddWarehouse_Click(object sender, EventArgs e)
         {
-            AddWarehouseForm addWarehouseForm = new AddWarehouseForm(FactoryID);
+            AddWarehouseForm addWarehouseForm = new AddWarehouseForm(factoryID);
             addWarehouseForm.Show();
             this.Hide();
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            ProductAddingForm productAddingForm = new ProductAddingForm(FactoryID);
+            ProductAddingForm productAddingForm = new ProductAddingForm(factoryID);
             productAddingForm.Show();
             this.Hide();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

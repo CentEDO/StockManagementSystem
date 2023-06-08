@@ -30,7 +30,6 @@ namespace VPMidterm
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.txtWarehouseName = new System.Windows.Forms.TextBox();
             this.btnBackNavForm = new System.Windows.Forms.Button();
             this.gvWarehouses = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.gvWarehouses)).BeginInit();
@@ -47,13 +46,6 @@ namespace VPMidterm
             this.label2.TabIndex = 3;
             this.label2.Text = "WAREHOUSES";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtWarehouseName
-            // 
-            this.txtWarehouseName.Location = new System.Drawing.Point(93, 65);
-            this.txtWarehouseName.Name = "txtWarehouseName";
-            this.txtWarehouseName.Size = new System.Drawing.Size(160, 20);
-            this.txtWarehouseName.TabIndex = 14;
             // 
             // btnBackNavForm
             // 
@@ -79,7 +71,6 @@ namespace VPMidterm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtWarehouseName);
             this.Controls.Add(this.btnBackNavForm);
             this.Controls.Add(this.gvWarehouses);
             this.Controls.Add(this.label2);
@@ -95,7 +86,6 @@ namespace VPMidterm
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtWarehouseName;
         private System.Windows.Forms.Button btnBackNavForm;
         private System.Windows.Forms.DataGridView gvWarehouses;
     }
