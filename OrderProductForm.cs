@@ -80,7 +80,7 @@ namespace VPMidterm
 
                             commandUpdate.Parameters.AddWithValue("@ProductID", productId);
                             commandUpdate.Parameters.AddWithValue("@Amount", orderAmount);
-                            commandUpdate.ExecuteNonQuery(); // Update the stock quantity
+                            commandUpdate.ExecuteNonQuery(); 
 
                             DateTime orderDate = DateTime.Now;
                             SqlCommand commandOrders = new SqlCommand("INSERT into Orders(CustomerFactoryID, ProductID, OrderDate, OrderQuantity) VALUES(@CustomerFactoryID, @ProductID, @OrderDate, @OrderQuantity)", conn, transaction);
@@ -136,7 +136,6 @@ namespace VPMidterm
             {
                 conn.Open();
 
-                // Seçilen üretici fabrikasının kimlik numarasını al
                 SqlCommand commandFactory = new SqlCommand("SELECT FactoryID FROM MANUFACTURING_FACTORIES WHERE FactoryName = @FactoryName", conn);
                 commandFactory.Parameters.AddWithValue("@FactoryName", selectedFactoryName);
                 SqlDataReader readerID = commandFactory.ExecuteReader();
@@ -146,7 +145,6 @@ namespace VPMidterm
                 }
                 readerID.Close();
 
-                // Seçilen üretici fabrikasına ait ürünleri ve bunların depolarını al
                 SqlCommand commandProduct = new SqlCommand("SELECT DISTINCT Products.ProductName, Products.ProductStockAmount, Warehouses.WarehouseName AS WarehouseName, Products.ProductID FROM Products JOIN Warehouses ON Products.WarehouseID = Warehouses.WarehouseID WHERE Products.FactoryID = @FactoryID", conn);
                 commandProduct.Parameters.AddWithValue("@FactoryID", selectedFactoryID);
 
@@ -155,7 +153,6 @@ namespace VPMidterm
                 // ComboBox'ı temizle
                 cmbboxWarehouse.Items.Clear();
 
-                // Ürünleri ve depoları ComboBox'a ekle
                 while (readerProducts.Read())
                 {
                     string productName = readerProducts.GetString(0);
@@ -179,16 +176,13 @@ namespace VPMidterm
             {
                 conn.Open();
 
-                // Seçilen depoya ait ürünleri al
                 SqlCommand commandProduct = new SqlCommand("SELECT Products.ProductName, Products.ProductID FROM Products JOIN Warehouses ON Products.WarehouseID = Warehouses.WarehouseID WHERE Warehouses.WarehouseName = @WarehouseName", conn);
                 commandProduct.Parameters.AddWithValue("@WarehouseName", selectedWarehouseName);
 
                 SqlDataReader readerProducts = commandProduct.ExecuteReader();
 
-                // ComboBox'ı temizle
                 cmbboxProduct.Items.Clear();
 
-                // Ürünleri ComboBox'a ekle
                 while (readerProducts.Read())
                 {
                     string productName = readerProducts.GetString(0);

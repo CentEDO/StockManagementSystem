@@ -77,5 +77,12 @@ namespace VPMidterm
         {
             this.Close();
         }
+
+        private void creditToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Credit credit = new Credit();
+            credit.Show();
+            this.Hide();
+        }
     }
 }

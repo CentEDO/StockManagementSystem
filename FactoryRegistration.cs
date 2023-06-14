@@ -38,7 +38,7 @@ namespace VPMidterm
                 connection.Close();
 
                 MessageBox.Show("Successfully.");
-                NavigationForm navigationForm = new NavigationForm();
+                NavigationForm navigationForm = new NavigationForm(getFactoryID);
                 navigationForm.Show();
                 this.Hide();
             }
@@ -59,7 +59,7 @@ namespace VPMidterm
                 connection.Close();
 
                 MessageBox.Show("Successfully.");
-                CustomerNavigationForm customerNavigationForm = new CustomerNavigationForm();
+                CustomerNavigationForm customerNavigationForm = new CustomerNavigationForm(getFactoryID);
                 customerNavigationForm.Show();
                 this.Hide();
             }
