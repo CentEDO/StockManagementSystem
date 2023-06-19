@@ -52,6 +52,12 @@
     <Compile Include="AddWarehouseForm.Designer.cs">
       <DependentUpon>AddWarehouseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfirmOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmOrderForm.Designer.cs">
+      <DependentUpon>ConfirmOrderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Credit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,12 @@
     <Compile Include="NavigationForm.Designer.cs">
       <DependentUpon>NavigationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderDetailsForm.Designer.cs">
+      <DependentUpon>OrderDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrderProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +148,9 @@
     <EmbeddedResource Include="AddWarehouseForm.resx">
       <DependentUpon>AddWarehouseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmOrderForm.resx">
+      <DependentUpon>ConfirmOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Credit.resx">
       <DependentUpon>Credit.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NavigationForm.resx">
       <DependentUpon>NavigationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderDetailsForm.resx">
+      <DependentUpon>OrderDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderProductForm.resx">
       <DependentUpon>OrderProductForm.cs</DependentUpon>

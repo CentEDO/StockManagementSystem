@@ -84,5 +84,20 @@ namespace VPMidterm
             credit.Show();
             this.Hide();
         }
+
+        private void btnOrderConfirmation_Click(object sender, EventArgs e)
+        {
+            ConfirmOrderForm confirmOrderForm = new ConfirmOrderForm(factoryID);
+            confirmOrderForm.Show();
+            this.Hide();
+        }
+
+        private void btnOrderConfirmation_Click_1(object sender, EventArgs e)
+        {
+            ConfirmOrderForm confirmOrderForm = new ConfirmOrderForm(factoryID);
+            confirmOrderForm.Show();
+            this.Hide();
+        }
+        
     }
 }

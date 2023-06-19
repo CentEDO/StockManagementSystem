@@ -50,27 +50,7 @@ namespace VPMidterm
                 }
             }
         }
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                DataTable dataTable = new DataTable();
-                connection.Open();
-                //  SqlDataAdapter adapter = new SqlDataAdapter("SELECT w.WarehouseName, w.WarehouseLocation, f.FactoryName FROM Warehouses w INNER JOIN ManufacturingFactories f ON w.FactoryID = f.FactoryID WHERE f.FactoryName LIKE '%" + txtSearch.Text + "%'", connection);
-                /// SqlDataAdapter adapter = new SqlDataAdapter("SELECT WarehouseName, WarehouseLocation, FactoryName FROM Warehouses INNER JOIN ManufacturingFactories ON Warehouses.FactoryID = ManufacturingFactories.FactoryID WHERE Warehouses.FactoryID = " + FactoryID + " AND FactoryName LIKE '%" + txtSearchFactoryName.Text + "%'", connection);
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM MANUFACTURING_FACTORIES WHERE FactoryName LIKE '%" + txtManufacturerName.Text + "%'", connection);
-
-                adapter.Fill(dataTable);
-                gvManufacturerFactories.DataSource = dataTable;
-                //dataGridViewWL.Columns["ManufactoringPassword"].Visible = false;
-                //dataGridViewWL.Columns["FactoryID"].Visible = false;
-                //dataGridViewWL.Columns["ContactPhone"].Visible = false;
-
-
-                connection.Close();
-            }
-        }
+        
 
     }
 }

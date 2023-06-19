@@ -47,6 +47,8 @@ namespace VPMidterm
             this.formToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.creditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnOrderConfirmation = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -197,22 +199,43 @@ namespace VPMidterm
             this.exitToolStripMenuItem,
             this.creditToolStripMenuItem});
             this.formToolStripMenuItem.Name = "formToolStripMenuItem";
-            this.formToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.formToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.formToolStripMenuItem.Text = "Form";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // creditToolStripMenuItem
             // 
             this.creditToolStripMenuItem.Name = "creditToolStripMenuItem";
-            this.creditToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.creditToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.creditToolStripMenuItem.Text = "Credit";
             this.creditToolStripMenuItem.Click += new System.EventHandler(this.creditToolStripMenuItem_Click);
+            // 
+            // btnOrderConfirmation
+            // 
+            this.btnOrderConfirmation.Location = new System.Drawing.Point(34, 273);
+            this.btnOrderConfirmation.Name = "btnOrderConfirmation";
+            this.btnOrderConfirmation.Size = new System.Drawing.Size(102, 36);
+            this.btnOrderConfirmation.TabIndex = 17;
+            this.btnOrderConfirmation.Text = "&Order Confirmation";
+            this.btnOrderConfirmation.UseVisualStyleBackColor = true;
+            this.btnOrderConfirmation.Click += new System.EventHandler(this.btnOrderConfirmation_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(30, 246);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(309, 24);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "If you want to go Order Confirmation";
             // 
             // NavigationForm
             // 
@@ -220,6 +243,8 @@ namespace VPMidterm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnOrderConfirmation);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.label5);
@@ -261,5 +286,7 @@ namespace VPMidterm
         private System.Windows.Forms.ToolStripMenuItem formToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem creditToolStripMenuItem;
+        private System.Windows.Forms.Button btnOrderConfirmation;
+        private System.Windows.Forms.Label label1;
     }
 }
