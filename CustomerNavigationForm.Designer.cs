@@ -40,6 +40,8 @@
             this.formToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.creditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnCargoDetails = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,11 +117,11 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(50, 276);
+            this.label4.Location = new System.Drawing.Point(50, 285);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(172, 24);
+            this.label4.Size = new System.Drawing.Size(177, 24);
             this.label4.TabIndex = 12;
-            this.label4.Text = "If you want to Order";
+            this.label4.Text = "If you want to Order:";
             // 
             // menuStrip1
             // 
@@ -145,22 +147,44 @@
             this.exitToolStripMenuItem,
             this.creditToolStripMenuItem});
             this.formToolStripMenuItem.Name = "formToolStripMenuItem";
-            this.formToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.formToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.formToolStripMenuItem.Text = "Form";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click_1);
             // 
             // creditToolStripMenuItem
             // 
             this.creditToolStripMenuItem.Name = "creditToolStripMenuItem";
-            this.creditToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.creditToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.creditToolStripMenuItem.Text = "Credit";
             this.creditToolStripMenuItem.Click += new System.EventHandler(this.creditToolStripMenuItem_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(495, 190);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(239, 24);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "If you want to Cargo Details:";
+            // 
+            // btnCargoDetails
+            // 
+            this.btnCargoDetails.Location = new System.Drawing.Point(499, 228);
+            this.btnCargoDetails.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCargoDetails.Name = "btnCargoDetails";
+            this.btnCargoDetails.Size = new System.Drawing.Size(142, 36);
+            this.btnCargoDetails.TabIndex = 14;
+            this.btnCargoDetails.Text = "&Cargo Details";
+            this.btnCargoDetails.UseVisualStyleBackColor = true;
+            this.btnCargoDetails.Click += new System.EventHandler(this.btnCargoDetails_Click);
             // 
             // CustomerNavigationForm
             // 
@@ -168,6 +192,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(802, 451);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnCargoDetails);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -199,5 +225,7 @@
         private System.Windows.Forms.ToolStripMenuItem formToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem creditToolStripMenuItem;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnCargoDetails;
     }
 }

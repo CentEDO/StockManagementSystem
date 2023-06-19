@@ -49,6 +49,8 @@ namespace VPMidterm
             this.creditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnOrderConfirmation = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnCargoDelivery = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -237,12 +239,35 @@ namespace VPMidterm
             this.label1.TabIndex = 16;
             this.label1.Text = "If you want to go Order Confirmation";
             // 
+            // btnCargoDelivery
+            // 
+            this.btnCargoDelivery.Location = new System.Drawing.Point(34, 355);
+            this.btnCargoDelivery.Name = "btnCargoDelivery";
+            this.btnCargoDelivery.Size = new System.Drawing.Size(102, 36);
+            this.btnCargoDelivery.TabIndex = 19;
+            this.btnCargoDelivery.Text = "&Cargo Delivery";
+            this.btnCargoDelivery.UseVisualStyleBackColor = true;
+            this.btnCargoDelivery.Click += new System.EventHandler(this.btnCargoDelivery_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(30, 328);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(278, 24);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "If you want to go Cargo Delivery:";
+            // 
             // NavigationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCargoDelivery);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnOrderConfirmation);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
@@ -288,5 +313,7 @@ namespace VPMidterm
         private System.Windows.Forms.ToolStripMenuItem creditToolStripMenuItem;
         private System.Windows.Forms.Button btnOrderConfirmation;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCargoDelivery;
+        private System.Windows.Forms.Label label6;
     }
 }

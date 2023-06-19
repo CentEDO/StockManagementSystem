@@ -55,7 +55,7 @@ namespace VPMidterm
         private void txtSearchFactoryName_TextChanged(object sender, EventArgs e)
         {
 
-            string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Midterm;Integrated Security=SSPI;";
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 DataTable dataTable = new DataTable();

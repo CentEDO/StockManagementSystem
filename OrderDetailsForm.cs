@@ -44,8 +44,8 @@ namespace VPMidterm
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string insertQuery = "INSERT INTO Reports (OrderId, EstimatedArriveDate, EstimatedDepartureDate, Volume, Weight, ActualArrivalDate, ActualDepartureDate, ParcelAmount) " +
-                                 "VALUES (@OrderId, @estimatedArriveDate, @estimatedDepartureDate, @volume, @weight, @actualArrivalDate, @actualDepartureDate, @parcelAmount)";
+            string insertQuery = "INSERT INTO Reports (OrderId, Name, EstimatedArriveDate, EstimatedDepartureDate, Volume, Weight, ActualArrivalDate, ActualDepartureDate, ParcelAmount) " +
+                                 "VALUES (@OrderId, @Name,  @estimatedArriveDate, @estimatedDepartureDate, @volume, @weight, @actualArrivalDate, @actualDepartureDate, @parcelAmount)";
 
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=VPMidterm;Integrated Security=SSPI;";
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -55,6 +55,7 @@ namespace VPMidterm
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
                 {
                     command.Parameters.AddWithValue("@OrderId", Convert.ToInt32(cmbOrderId.Text));
+                    command.Parameters.AddWithValue("@Name", txtName.Text);
                     command.Parameters.AddWithValue("@estimatedArriveDate", Convert.ToDateTime(dateEstArrDate.Text));
                     command.Parameters.AddWithValue("@estimatedDepartureDate", Convert.ToDateTime(dateEsDepDate.Text));
                     command.Parameters.AddWithValue("@volume", Convert.ToDecimal(numericVolume.Text));

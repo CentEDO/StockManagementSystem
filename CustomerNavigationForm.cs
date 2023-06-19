@@ -56,5 +56,12 @@ namespace VPMidterm
             credit.Show();
             this.Hide();
         }
+
+        private void btnCargoDetails_Click(object sender, EventArgs e)
+        {
+            CargoDetailsCustomerForm cargoDetailsCustomerForm = new CargoDetailsCustomerForm(factoryID);
+            cargoDetailsCustomerForm.Show();
+            this.Hide();
+        }
     }
 }

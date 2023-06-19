@@ -98,6 +98,12 @@ namespace VPMidterm
             confirmOrderForm.Show();
             this.Hide();
         }
-        
+
+        private void btnCargoDelivery_Click(object sender, EventArgs e)
+        {
+            CargoDeliveryForm cargoDeliveryForm = new CargoDeliveryForm(factoryID);
+            cargoDeliveryForm.Show();
+            this.Hide();
+        }
     }
 }

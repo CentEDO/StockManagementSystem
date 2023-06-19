@@ -52,6 +52,18 @@
     <Compile Include="AddWarehouseForm.Designer.cs">
       <DependentUpon>AddWarehouseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CargoDeliveryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargoDeliveryForm.Designer.cs">
+      <DependentUpon>CargoDeliveryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CargoDetailsCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargoDetailsCustomerForm.Designer.cs">
+      <DependentUpon>CargoDetailsCustomerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConfirmOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +87,12 @@
     </Compile>
     <Compile Include="CustomerNavigationForm.Designer.cs">
       <DependentUpon>CustomerNavigationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerReportsListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerReportsListForm.Designer.cs">
+      <DependentUpon>CustomerReportsListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\DbContext.cs" />
     <Compile Include="FactoryLogin.cs">
@@ -147,6 +165,12 @@
     </Compile>
     <EmbeddedResource Include="AddWarehouseForm.resx">
       <DependentUpon>AddWarehouseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CargoDeliveryForm.resx">
+      <DependentUpon>CargoDeliveryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CargoDetailsCustomerForm.resx">
+      <DependentUpon>CargoDetailsCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmOrderForm.resx">
       <DependentUpon>ConfirmOrderForm.cs</DependentUpon>
