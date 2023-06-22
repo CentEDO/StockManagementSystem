@@ -63,5 +63,12 @@ namespace VPMidterm
             cargoDetailsCustomerForm.Show();
             this.Hide();
         }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            CustomerReportsListForm customerReportsListForm = new CustomerReportsListForm(factoryID);
+            customerReportsListForm.Show();
+            this.Hide();
+        }
     }
 }

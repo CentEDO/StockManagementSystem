@@ -86,14 +86,14 @@ namespace VPMidterm
 
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("başarılı");
+                            MessageBox.Show("Success.");
                             OrderDetailsForm orderDetailsForm = new OrderDetailsForm(factoryId);
                             orderDetailsForm.Show();
                             this.Hide();
                         }
                         else
                         {
-                            MessageBox.Show("başarısız");
+                            MessageBox.Show("Error");
                         }
                     }
                 }

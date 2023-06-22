@@ -42,6 +42,8 @@
             this.creditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label5 = new System.Windows.Forms.Label();
             this.btnCargoDetails = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnReport = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -169,7 +171,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(495, 190);
+            this.label5.Location = new System.Drawing.Point(493, 91);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(239, 24);
             this.label5.TabIndex = 15;
@@ -177,7 +179,7 @@
             // 
             // btnCargoDetails
             // 
-            this.btnCargoDetails.Location = new System.Drawing.Point(499, 228);
+            this.btnCargoDetails.Location = new System.Drawing.Point(497, 129);
             this.btnCargoDetails.Margin = new System.Windows.Forms.Padding(2);
             this.btnCargoDetails.Name = "btnCargoDetails";
             this.btnCargoDetails.Size = new System.Drawing.Size(142, 36);
@@ -186,12 +188,36 @@
             this.btnCargoDetails.UseVisualStyleBackColor = true;
             this.btnCargoDetails.Click += new System.EventHandler(this.btnCargoDetails_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(493, 179);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(220, 24);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "If you want to go Reports:";
+            // 
+            // btnReport
+            // 
+            this.btnReport.Location = new System.Drawing.Point(497, 217);
+            this.btnReport.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(142, 36);
+            this.btnReport.TabIndex = 16;
+            this.btnReport.Text = "&Report";
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            // 
             // CustomerNavigationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(802, 451);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnReport);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnCargoDetails);
             this.Controls.Add(this.menuStrip1);
@@ -227,5 +253,7 @@
         private System.Windows.Forms.ToolStripMenuItem creditToolStripMenuItem;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnCargoDetails;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnReport;
     }
 }

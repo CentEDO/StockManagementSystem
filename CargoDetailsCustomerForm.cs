@@ -107,22 +107,22 @@ namespace VPMidterm
 
                             if (reportsRowsAffected > 0)
                             {
-                                MessageBox.Show("Reports tablosu güncellendi.");
+                                MessageBox.Show("Reports updated.");
                             }
                             else
                             {
-                                MessageBox.Show("Reports tablosu güncellenirken bir hata oluştu.");
+                                MessageBox.Show("Can not Updated.");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Güncelleme başarısız.");
+                            MessageBox.Show("Can not Updated.");
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Hata: " + ex.Message);
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
         }

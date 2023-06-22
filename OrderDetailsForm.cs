@@ -67,7 +67,7 @@ namespace VPMidterm
                     command.ExecuteNonQuery();
                 }
 
-                MessageBox.Show("Veri eklendi!");
+                MessageBox.Show("Data Added.");
 
                 // Diğer işlemler veya form geçişi
             }
